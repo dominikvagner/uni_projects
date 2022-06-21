@@ -1,0 +1,146 @@
+\section{Příklad 5}
+% Jako parametr zadejte skupinu (A-H)
+\patyZadani{G}
+
+\vspace{1cm}
+\large{\textbf{Rešení (sestavení diferenciální rovnice pro chování daného obvodu a výpočet analytického rešení):}}
+\vspace{0.5cm}
+
+%%% Krok 1
+\begin{center}
+\textbf{Krok 1} - Sestavíme si rovnice pro $i_L$ a $i'_L$. \\
+\end{center}
+\vspace{-0.5cm}
+
+\begin{gather*}
+i_L = \frac{U_R}{R}\\\\
+\newline
+\newline
+i'_L = \frac{U_L}{L}\\\\
+\end{gather*}
+
+%%% Krok 2
+\begin{center}
+\textbf{Krok 2} - Vytvoříme rovnici podle II. Kirchhoffového zákona a upravíme ji. \\
+\end{center}
+\vspace{-0.5cm}
+
+\begin{gather*}
+U_R + U_L - U = 0\\\\
+\newline
+\newline
+U = R \times i_L + L \times i'_L\\\\
+\end{gather*}
+
+\newpage
+
+%%% Krok 3
+\begin{center}
+\textbf{Krok 3} - Vypočítáme $\lambda$ z očekávaného tvaru rovnice. \\
+\end{center}
+\vspace{-0.5cm}
+
+\begin{gather*}
+\text{Očekávaný tvar:}\ i_L(t) = k(t) \times e^{\lambda \times t} \\\\
+\newline
+\newline
+\lambda = ? \\\\
+\newline
+\newline
+\lambda \times L + R = 0\\\\
+\newline
+\newline
+\lambda = -\frac{R}{L}\\\\
+\end{gather*}
+
+%%% Krok 4
+\begin{center}
+\textbf{Krok 4} - Dosadíme vypočítanou $\lambda$ do očekávaného tvaru a derivujeme. \\
+\end{center}
+\vspace{-0.5cm}
+
+\begin{gather*}
+i_L(t) = k(t) \times e^{-\frac{R}{L}t} \\\\
+\newline
+\newline
+i'_L(t) = k'(t) \times e^{-\frac{R}{L}t} + k(t) \times (-\frac{R}{L}) \times e^{-\frac{R}{L}t} \\\\
+\newline
+\newline
+\end{gather*}
+
+
+%%% Krok 5
+\begin{center}
+\textbf{Krok 5} - Dosadíme do rovnice ze druhého kroku a upravíme. \\
+\end{center}
+\vspace{-0.5cm}
+
+\begin{gather*}
+R \times k(t) \times e^{-\frac{R}{L}t} + L \times (k'(t) \times e^{-\frac{R}{L}t} + k(t) \times (-\frac{R}{L}) \times e^{-\frac{R}{L}t}) = U \\\\
+\newline
+\newline
+L \times k'(t) \times e^{-\frac{R}{L}t} = U \\\\
+\newline
+\newline
+k'(t) = \frac{U}{L} \times e^{\frac{R}{L}t} \ / \int \\\\
+\newline
+\newline
+k(t) = \frac{\frac{U}{L}}{\frac{R}{L}} \times e^{\frac{R}{L}t} + K \\\\
+\newline
+\newline
+k(t) = \frac{U}{R} \times e^{\frac{R}{L}t} + K\\\\
+\newline
+\newline
+\end{gather*}
+
+\newpage
+
+%%% Krok 6
+\begin{center}
+\textbf{Krok 6} - Dosadíme k(t) do očekávané rovnice. \\
+\end{center}
+\vspace{-0.5cm}
+
+\begin{gather*}
+i_L =  (\frac{U}{R} \times e^{\frac{R}{L}t} + K) * e^{-\frac{R}{L}t} \\\\
+\newline
+\newline
+i_L = \frac{U}{R} + K \times e^{-\frac{R}{L}t}\\\\
+\newline
+\newline
+\end{gather*}
+
+%%% Krok 7
+\begin{center}
+\textbf{Krok 7} - Vyjádříme si K podle podmínky $i_L(t) = 8 A$ (kde $t = 0$) a vytvoříme analaytické řešení. \\
+\end{center}
+\vspace{-0.5cm}
+
+\begin{gather*}
+i_L(0) = \frac{U}{R} + K \times e^{-\frac{R}{L} \times 0} \\\\
+\newline
+\newline
+K = i_L(0) - \frac{U}{R} \\\\
+\newline
+\newline
+\textbf{Analitické řešení:} \\\\
+\newline
+\newline
+i_L = \frac{U}{R} + (i_L(0) - \frac{U}{R}) \times e^{-\frac{R}{L}t} \\\\
+\end{gather*}
+
+%%% Krok 8
+\begin{center}
+\textbf{Krok 8} - Kontrolu provedeme dosazením hodnot do analitického řešení s hodntou $t = 0$. \\
+\end{center}
+\vspace{-0.5cm}
+
+\begin{gather*}
+i_L = \frac{U}{R} + (i_L(0) - \frac{U}{R}) \times e^{-\frac{R}{L}t} \\\\
+\newline
+\newline
+8 = \frac{20}{25} + (8-\frac{20}{25}) * e^0 \\\\
+\newline
+\newline
+8\ =\ 8 \\\\
+\end{gather*}

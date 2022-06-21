@@ -1,0 +1,339 @@
+#! /bin/sh
+
+export POSIXLY_CORRECT=yes
+export LC_NUMERIC=en_US.UTF-8
+
+print_help() {
+  echo "Usage: tradelog [-h|--help]"
+  echo "       tradelog [FILTER...] [COMMAND] [LOG...]"
+  echo ""
+}
+
+COMMAND=""
+AFTER=""
+BEFORE=""
+TICKERS=""
+WIDTH=""
+INPUT=""
+GZIP=""
+OUTPUT=""
+
+while [ "$#" -gt 0 ]; do
+  case "$1" in
+  -h|--help)
+    print_help
+    exit 0
+    ;;
+  list-tick|profit|pos|last-price|hist-ord|graph-pos)
+    if [ -z "$COMMAND" ]; then
+      COMMAND="$1"
+    else
+      echo "ERROR: Commands can't be combined."
+      exit 1
+    fi
+    shift
+    ;;
+  -a)
+    AFTER="$2"
+    shift
+    shift
+    ;;
+  -b)
+    BEFORE="$2"
+    shift
+    shift
+    ;;
+  -t)
+    if [ -z "$TICKERS" ]; then
+      TICKERS="$2"
+    else
+      TICKERS="${TICKERS} $2"
+    fi
+    shift
+    shift
+    ;;
+  -w)
+    WIDTH="$2"
+    shift
+    shift
+    ;;
+  *.log)
+    if [ -z "$INPUT" ]; then
+      INPUT="$(cat "$1")"
+    else
+      INPUT="${INPUT}\n$(cat "$1")"
+    fi
+    shift
+    ;;
+  *.log.gz)
+    GZIP="$(gzip -d -c "$1")"
+    if [ -z "$INPUT" ]; then
+      INPUT="${GZIP}"
+    else
+      INPUT="${INPUT}\n${GZIP}"
+    fi
+    shift
+    ;;
+  esac
+done
+
+if [ -z "$INPUT" ]; then
+  INPUT=$(cat)
+fi
+
+############################## Filters ###############################
+if [ -n "$AFTER" ]; then
+  INPUT="$(echo "$INPUT" | awk -F ';' -v after="$AFTER" '{if($1 > after) print $0}')"
+fi
+
+if [ -n "$BEFORE" ]; then
+  INPUT="$(echo "$INPUT" | awk -F ';' -v before="$BEFORE" '{if($1 < before) print $0}')"
+fi
+
+if [ -n "$TICKERS" ]; then
+  INPUT="$(echo "$INPUT" | awk -F ';' -v t="$TICKERS" '
+  BEGIN { split(t, tickers, " ") }
+  {
+  for (i in tickers) {
+    if($2 == tickers[i])
+      print $0
+  }
+  }')"
+fi
+
+############################## Commands ##############################
+if [ "list-tick" = "$COMMAND" ]; then
+  OUTPUT=$(echo "$INPUT" | cut -d ";" -f2 | sort | uniq )
+fi
+
+if [ "profit" = "$COMMAND" ]; then
+  OUTPUT=$(echo "$INPUT" | awk -F ';' '
+  BEGIN { total = 0 }
+  {
+    if ($3 == "sell") {
+      total += $4 * $6;
+    } else {
+      total -= $4 * $6;
+    }
+  }
+  END { printf "%.2f\n", total }')
+fi
+
+if [ "pos" = "$COMMAND" ]; then
+  INPUT="$(echo "$INPUT" | sort -t ";" -k 2,2)"
+  LIST_OF_TICKERS="$(echo "$INPUT" | cut -d ";" -f2 | uniq)"
+  NUM_OF_TICKERS=$(echo "$LIST_OF_TICKERS" | awk 'END{print NR}')
+
+  i=0
+  while [ $i -lt "$NUM_OF_TICKERS" ]; do
+    INPUT_BY_TICKER=$(echo "$INPUT" |
+    awk -F ";" '{
+      if (NR == 1)
+        ticker = $2
+      if ($2 == ticker)
+       print $0
+    }' | sort -t ";" -k1,1)
+    INPUT_LINE_COUNT=$(echo "$INPUT_BY_TICKER" | awk 'END{print NR}')
+
+    OUTPUT="${OUTPUT}\n$(echo "$INPUT_BY_TICKER" | awk -F ';' '
+      BEGIN { total = 0 }
+      {
+        if ($3 == "sell") {
+          total -= $6;
+        } else {
+          total += $6;
+        }
+      }
+      END {
+        total *= $4
+        printf "%-10s: %.2f\n", $2, total
+      }
+      ')"
+
+    INPUT=$(echo "$INPUT" | sed 1,"$INPUT_LINE_COUNT"d)
+    i=$((i + 1))
+  done
+
+  LEN=$(echo "$OUTPUT" | awk -F ":" '
+    BEGIN { l = 0 }
+      {
+        if (length($2) > l)
+          l = length($2)
+      }
+      END { print l }')
+
+  OUTPUT="$(echo "$OUTPUT" | awk -F ':' -v l="$LEN" '{printf "%s:%*.2f\n", $1, l, $2}')"
+
+  OUTPUT=$(echo "$OUTPUT" | sed '1d' | sort -t: -nrk 2)
+fi
+
+if [ "last-price" = "$COMMAND" ]; then
+  INPUT="$(echo "$INPUT" | sort -t ";" -k 2,2)"
+  LIST_OF_TICKERS="$(echo "$INPUT" | cut -d ";" -f2 | uniq)"
+  NUM_OF_TICKERS=$(echo "$LIST_OF_TICKERS" | awk 'END{print NR}')
+
+  i=0
+  while [ $i -lt "$NUM_OF_TICKERS" ]; do
+    INPUT_BY_TICKER=$(echo "$INPUT" |
+    awk -F ";" '{
+      if (NR == 1)
+        ticker = $2
+      if ($2 == ticker)
+       print $0
+    }' | sort -t ";" -k1,1)
+    INPUT_LINE_COUNT=$(echo "$INPUT_BY_TICKER" | awk 'END{print NR}')
+
+    OUTPUT="${OUTPUT}\n$(echo "$INPUT_BY_TICKER" | awk -F ';' 'END {printf "%-10s: %.2f\n", $2, $4}')"
+
+    INPUT=$(echo "$INPUT" | sed 1,"$INPUT_LINE_COUNT"d)
+    i=$((i + 1))
+  done
+
+  LEN=$(echo "$OUTPUT" | awk -F ":" '
+    BEGIN { l = 0 }
+    {
+      if (length($2) > l)
+        l = length($2)
+    }
+    END { print l }')
+
+  OUTPUT="$(echo "$OUTPUT" | awk -F ':' -v l="$LEN" '{printf "%s:%*.2f\n", $1, l, $2}')"
+
+  OUTPUT=$(echo "$OUTPUT" | sed '1d' | sort -t: -k 1,1)
+fi
+
+if [ "hist-ord" = "$COMMAND" ]; then
+  INPUT="$(echo "$INPUT" | sort -t ";" -k 2,2)"
+  LIST_OF_TICKERS="$(echo "$INPUT" | cut -d ";" -f2 | uniq)"
+  NUM_OF_TICKERS=$(echo "$LIST_OF_TICKERS" | awk 'END{print NR}')
+
+  i=0
+  while [ $i -lt "$NUM_OF_TICKERS" ]; do
+    INPUT_BY_TICKER=$(echo "$INPUT" |
+    awk -F ";" '{
+      if (NR == 1)
+        ticker = $2
+      if ($2 == ticker)
+       print $0
+    }' | sort -t ";" -k1,1)
+    INPUT_LINE_COUNT=$(echo "$INPUT_BY_TICKER" | awk 'END{print NR}')
+
+    OUTPUT="${OUTPUT}\n$(echo "$INPUT_BY_TICKER" | awk -F ';' '
+      {
+        if (NR == 1)
+        printf "%-10s: ", $2
+        printf "#"
+      }
+      END {printf "\n"}')"
+    INPUT=$(echo "$INPUT" | sed 1,"$INPUT_LINE_COUNT"d)
+    i=$((i + 1))
+  done
+
+   if [ -n "$WIDTH" ]; then
+    LEN=$(echo "$OUTPUT" | awk -F ':' '
+      BEGIN { l = 0 }
+      {
+        if (length($2) > l)
+          l = length($2)
+      }
+      END { print l }')
+
+    OUTPUT="$(echo "$OUTPUT" | awk -F ':' -v width="$WIDTH" -v max_len="$LEN" '
+      {
+      printf "%s:", $1
+      count = int (((length($2) - 1) / (max_len - 1)) * width)
+      if (count != 0)
+        printf " "
+      for (i = 0; i < count; i++) {
+        printf "#"
+      }
+      printf "\n"
+      } ')"
+  fi
+
+  OUTPUT=$(echo "$OUTPUT" | sed '1d' | sort -t: -k 1,1)
+fi
+
+if [ "graph-pos" = "$COMMAND" ]; then
+  INPUT="$(echo "$INPUT" | sort -t ";" -k 2,2)"
+  LIST_OF_TICKERS="$(echo "$INPUT" | cut -d ";" -f2 | uniq)"
+  NUM_OF_TICKERS=$(echo "$LIST_OF_TICKERS" | awk 'END{print NR}')
+
+  i=0
+  while [ $i -lt "$NUM_OF_TICKERS" ]; do
+    INPUT_BY_TICKER=$(echo "$INPUT" |
+    awk -F ";" '{
+      if (NR == 1)
+        ticker = $2
+      if ($2 == ticker)
+       print $0
+    }' | sort -t ";" -k1,1)
+    INPUT_LINE_COUNT=$(echo "$INPUT_BY_TICKER" | awk 'END{print NR}')
+
+    OUTPUT="${OUTPUT}\n$(echo "$INPUT_BY_TICKER" | awk -F ';' '
+      BEGIN { total = 0 }
+      {
+        if ($3 == "sell") {
+          total -= $6;
+        } else {
+          total += $6;
+        }
+      }
+      END {
+        total *= $4
+        total = int (total / 1000)
+        printf "%-10s: ", $2
+
+        if (total < 0) {
+          total *= -1
+          for (i = 0; i < total; i++) {
+            printf "!"
+          }
+        } else {
+          for (i = 0; i < total; i++) {
+            printf "#"
+          }
+        }
+        printf "\n"
+      }')"
+
+    INPUT=$(echo "$INPUT" | sed 1,"$INPUT_LINE_COUNT"d)
+    i=$((i + 1))
+  done
+
+  if [ -n "$WIDTH" ]; then
+    LEN=$(echo "$OUTPUT" | awk -F ":" '
+      BEGIN { l = 0 }
+      {
+        if (length($2) > l)
+          l = length($2)
+      }
+      END { print l }')
+
+    OUTPUT="$(echo "$OUTPUT" | awk -F ':' -v width="$WIDTH" -v max_len="$LEN" '
+      {
+      printf "%s:", $1
+      count = int (((length($2) - 1) / (max_len - 1)) * width)
+      if (count != 0)
+        printf " "
+      if ($2 ~ /!/) {
+        for (i = 0; i < count; i++) {
+          printf "!"
+        }
+      } else {
+        for (i = 0; i < count; i++) {
+          printf "#"
+        }
+      }
+      printf "\n"
+      } ')"
+  fi
+
+  OUTPUT=$(echo "$OUTPUT" | sed '1d' | sort -t: -k 1,1)
+fi
+
+if [ -z "$OUTPUT" ]; then
+  OUTPUT="$INPUT"
+fi
+
+echo "$OUTPUT"
