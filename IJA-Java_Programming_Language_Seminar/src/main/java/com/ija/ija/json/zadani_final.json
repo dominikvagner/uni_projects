@@ -1,0 +1,800 @@
+{
+  "name" : "zadani_final",
+  "classifiers" : [ {
+    "name" : "int",
+    "userDefined" : false
+  }, {
+    "name" : "long",
+    "userDefined" : false
+  }, {
+    "name" : "float",
+    "userDefined" : false
+  }, {
+    "name" : "double",
+    "userDefined" : false
+  }, {
+    "name" : "string",
+    "userDefined" : false
+  }, {
+    "name" : "boolean",
+    "userDefined" : false
+  }, {
+    "name" : "void",
+    "userDefined" : false
+  }, {
+    "name" : "Element",
+    "userDefined" : true
+  }, {
+    "name" : "UMLClassifier",
+    "userDefined" : true
+  }, {
+    "name" : "ClassDiagram",
+    "userDefined" : true
+  }, {
+    "name" : "UMLClass",
+    "userDefined" : true
+  }, {
+    "name" : "UMLAttribute",
+    "userDefined" : true
+  } ],
+  "classes" : [ {
+    "name" : "Element",
+    "attributes" : [ {
+      "name" : "name",
+      "type" : {
+        "name" : "string",
+        "userDefined" : false
+      },
+      "modifier" : "+",
+      "list" : false
+    } ],
+    "operations" : [ {
+      "name" : "rename",
+      "type" : {
+        "name" : "void",
+        "userDefined" : false
+      },
+      "modifier" : "+",
+      "arguments" : [ {
+        "name" : "name",
+        "type" : {
+          "name" : "string",
+          "userDefined" : false
+        },
+        "modifier" : "+",
+        "list" : false
+      } ],
+      "list" : false
+    }, {
+      "name" : "Element",
+      "type" : {
+        "name" : "Element",
+        "userDefined" : true
+      },
+      "modifier" : "+",
+      "arguments" : [ {
+        "name" : "name",
+        "type" : {
+          "name" : "string",
+          "userDefined" : false
+        },
+        "modifier" : "+",
+        "list" : false
+      } ],
+      "list" : false
+    }, {
+      "name" : "getName",
+      "type" : {
+        "name" : "string",
+        "userDefined" : false
+      },
+      "modifier" : "+",
+      "arguments" : [ ],
+      "list" : false
+    } ],
+    "generalizedAttributes" : [ ],
+    "generalizedOperations" : [ ],
+    "center" : {
+      "x" : 448.0,
+      "y" : 49.79999999999998
+    },
+    "north" : {
+      "x" : 533.2,
+      "y" : 49.79999999999998
+    },
+    "east" : {
+      "x" : 448.0,
+      "y" : 111.79999999999998
+    },
+    "south" : {
+      "x" : 533.2,
+      "y" : 173.79999999999998
+    },
+    "west" : {
+      "x" : 618.4,
+      "y" : 111.79999999999998
+    },
+    "height" : 124.0,
+    "width" : 170.4,
+    "abstract" : false,
+    "anchorPoints" : [ {
+      "x" : 533.2,
+      "y" : 49.79999999999998
+    }, {
+      "x" : 448.0,
+      "y" : 111.79999999999998
+    }, {
+      "x" : 533.2,
+      "y" : 173.79999999999998
+    }, {
+      "x" : 618.4,
+      "y" : 111.79999999999998
+    } ],
+    "userDefined" : true
+  }, {
+    "name" : "UMLClassifier",
+    "attributes" : [ ],
+    "operations" : [ {
+      "name" : "UMLClassifier",
+      "type" : {
+        "name" : "void",
+        "userDefined" : false
+      },
+      "modifier" : "+",
+      "arguments" : [ {
+        "name" : "name",
+        "type" : {
+          "name" : "string",
+          "userDefined" : false
+        },
+        "modifier" : "+",
+        "list" : false
+      } ],
+      "list" : false
+    }, {
+      "name" : "isUserDefined",
+      "type" : {
+        "name" : "boolean",
+        "userDefined" : false
+      },
+      "modifier" : "+",
+      "arguments" : [ ],
+      "list" : false
+    } ],
+    "generalizedAttributes" : [ {
+      "name" : "name",
+      "type" : {
+        "name" : "string",
+        "userDefined" : false
+      },
+      "modifier" : "+",
+      "list" : false
+    } ],
+    "generalizedOperations" : [ {
+      "name" : "Element",
+      "type" : {
+        "name" : "void",
+        "userDefined" : false
+      },
+      "modifier" : "+",
+      "arguments" : [ {
+        "name" : "name",
+        "type" : {
+          "name" : "string",
+          "userDefined" : false
+        },
+        "modifier" : "+",
+        "list" : false
+      } ],
+      "list" : false
+    }, {
+      "name" : "getName",
+      "type" : {
+        "name" : "string",
+        "userDefined" : false
+      },
+      "modifier" : "+",
+      "arguments" : [ ],
+      "list" : false
+    }, {
+      "name" : "rename",
+      "type" : {
+        "name" : "void",
+        "userDefined" : false
+      },
+      "modifier" : "+",
+      "arguments" : [ {
+        "name" : "name",
+        "type" : {
+          "name" : "string",
+          "userDefined" : false
+        },
+        "modifier" : "+",
+        "list" : false
+      } ],
+      "list" : false
+    } ],
+    "center" : {
+      "x" : 445.2,
+      "y" : 336.2000000000001
+    },
+    "north" : {
+      "x" : 529.6,
+      "y" : 336.2000000000001
+    },
+    "east" : {
+      "x" : 445.2,
+      "y" : 374.6000000000001
+    },
+    "south" : {
+      "x" : 529.6,
+      "y" : 413.0000000000001
+    },
+    "west" : {
+      "x" : 614.0,
+      "y" : 374.6000000000001
+    },
+    "height" : 76.8,
+    "width" : 168.8,
+    "abstract" : false,
+    "anchorPoints" : [ {
+      "x" : 529.6,
+      "y" : 336.2000000000001
+    }, {
+      "x" : 445.2,
+      "y" : 374.6000000000001
+    }, {
+      "x" : 529.6,
+      "y" : 413.0000000000001
+    }, {
+      "x" : 614.0,
+      "y" : 374.6000000000001
+    } ],
+    "userDefined" : true
+  }, {
+    "name" : "ClassDiagram",
+    "attributes" : [ {
+      "name" : "classes",
+      "type" : {
+        "name" : "UMLClassifier",
+        "userDefined" : true
+      },
+      "modifier" : "+",
+      "list" : true
+    } ],
+    "operations" : [ {
+      "name" : "classifierForName",
+      "type" : {
+        "name" : "UMLClassifier",
+        "userDefined" : true
+      },
+      "modifier" : "+",
+      "arguments" : [ {
+        "name" : "name",
+        "type" : {
+          "name" : "string",
+          "userDefined" : false
+        },
+        "modifier" : "+",
+        "list" : false
+      } ],
+      "list" : false
+    }, {
+      "name" : "createClass",
+      "type" : {
+        "name" : "UMLClass",
+        "userDefined" : true
+      },
+      "modifier" : "+",
+      "arguments" : [ {
+        "name" : "name",
+        "type" : {
+          "name" : "string",
+          "userDefined" : false
+        },
+        "modifier" : "+",
+        "list" : false
+      } ],
+      "list" : false
+    } ],
+    "generalizedAttributes" : [ {
+      "name" : "name",
+      "type" : {
+        "name" : "string",
+        "userDefined" : false
+      },
+      "modifier" : "+",
+      "list" : false
+    } ],
+    "generalizedOperations" : [ {
+      "name" : "Element",
+      "type" : {
+        "name" : "void",
+        "userDefined" : false
+      },
+      "modifier" : "+",
+      "arguments" : [ {
+        "name" : "name",
+        "type" : {
+          "name" : "string",
+          "userDefined" : false
+        },
+        "modifier" : "+",
+        "list" : false
+      } ],
+      "list" : false
+    }, {
+      "name" : "getName",
+      "type" : {
+        "name" : "string",
+        "userDefined" : false
+      },
+      "modifier" : "+",
+      "arguments" : [ ],
+      "list" : false
+    }, {
+      "name" : "rename",
+      "type" : {
+        "name" : "void",
+        "userDefined" : false
+      },
+      "modifier" : "+",
+      "arguments" : [ {
+        "name" : "name",
+        "type" : {
+          "name" : "string",
+          "userDefined" : false
+        },
+        "modifier" : "+",
+        "list" : false
+      } ],
+      "list" : false
+    } ],
+    "center" : {
+      "x" : 761.0,
+      "y" : 289.2
+    },
+    "north" : {
+      "x" : 896.6,
+      "y" : 289.2
+    },
+    "east" : {
+      "x" : 761.0,
+      "y" : 339.59999999999997
+    },
+    "south" : {
+      "x" : 896.6,
+      "y" : 390.0
+    },
+    "west" : {
+      "x" : 1032.2,
+      "y" : 339.59999999999997
+    },
+    "height" : 100.8,
+    "width" : 271.2,
+    "abstract" : false,
+    "anchorPoints" : [ {
+      "x" : 896.6,
+      "y" : 289.2
+    }, {
+      "x" : 761.0,
+      "y" : 339.59999999999997
+    }, {
+      "x" : 896.6,
+      "y" : 390.0
+    }, {
+      "x" : 1032.2,
+      "y" : 339.59999999999997
+    } ],
+    "userDefined" : true
+  }, {
+    "name" : "UMLClass",
+    "attributes" : [ {
+      "name" : "attributes",
+      "type" : {
+        "name" : "UMLAttribute",
+        "userDefined" : true
+      },
+      "modifier" : "+",
+      "list" : true
+    } ],
+    "operations" : [ {
+      "name" : "addAttribute",
+      "type" : {
+        "name" : "boolean",
+        "userDefined" : false
+      },
+      "modifier" : "+",
+      "arguments" : [ {
+        "name" : "attr",
+        "type" : {
+          "name" : "UMLAttribute",
+          "userDefined" : true
+        },
+        "modifier" : "+",
+        "list" : false
+      } ],
+      "list" : false
+    }, {
+      "name" : "getAttrPosition",
+      "type" : {
+        "name" : "int",
+        "userDefined" : false
+      },
+      "modifier" : "+",
+      "arguments" : [ {
+        "name" : "attr",
+        "type" : {
+          "name" : "UMLAttribute",
+          "userDefined" : true
+        },
+        "modifier" : "+",
+        "list" : false
+      } ],
+      "list" : false
+    } ],
+    "generalizedAttributes" : [ {
+      "name" : "name",
+      "type" : {
+        "name" : "string",
+        "userDefined" : false
+      },
+      "modifier" : "+",
+      "list" : false
+    } ],
+    "generalizedOperations" : [ {
+      "name" : "Element",
+      "type" : {
+        "name" : "void",
+        "userDefined" : false
+      },
+      "modifier" : "+",
+      "arguments" : [ {
+        "name" : "name",
+        "type" : {
+          "name" : "string",
+          "userDefined" : false
+        },
+        "modifier" : "+",
+        "list" : false
+      } ],
+      "list" : false
+    }, {
+      "name" : "getName",
+      "type" : {
+        "name" : "string",
+        "userDefined" : false
+      },
+      "modifier" : "+",
+      "arguments" : [ ],
+      "list" : false
+    }, {
+      "name" : "rename",
+      "type" : {
+        "name" : "void",
+        "userDefined" : false
+      },
+      "modifier" : "+",
+      "arguments" : [ {
+        "name" : "name",
+        "type" : {
+          "name" : "string",
+          "userDefined" : false
+        },
+        "modifier" : "+",
+        "list" : false
+      } ],
+      "list" : false
+    }, {
+      "name" : "UMLClassifier",
+      "type" : {
+        "name" : "void",
+        "userDefined" : false
+      },
+      "modifier" : "+",
+      "arguments" : [ {
+        "name" : "name",
+        "type" : {
+          "name" : "string",
+          "userDefined" : false
+        },
+        "modifier" : "+",
+        "list" : false
+      } ],
+      "list" : false
+    }, {
+      "name" : "isUserDefined",
+      "type" : {
+        "name" : "boolean",
+        "userDefined" : false
+      },
+      "modifier" : "+",
+      "arguments" : [ ],
+      "list" : false
+    } ],
+    "center" : {
+      "x" : 237.40000000000003,
+      "y" : 504.79999999999995
+    },
+    "north" : {
+      "x" : 361.40000000000003,
+      "y" : 504.79999999999995
+    },
+    "east" : {
+      "x" : 237.40000000000003,
+      "y" : 555.1999999999999
+    },
+    "south" : {
+      "x" : 361.40000000000003,
+      "y" : 605.5999999999999
+    },
+    "west" : {
+      "x" : 485.40000000000003,
+      "y" : 555.1999999999999
+    },
+    "height" : 100.8,
+    "width" : 248.0,
+    "abstract" : false,
+    "anchorPoints" : [ {
+      "x" : 361.40000000000003,
+      "y" : 504.79999999999995
+    }, {
+      "x" : 237.40000000000003,
+      "y" : 555.1999999999999
+    }, {
+      "x" : 361.40000000000003,
+      "y" : 605.5999999999999
+    }, {
+      "x" : 485.40000000000003,
+      "y" : 555.1999999999999
+    } ],
+    "userDefined" : true
+  }, {
+    "name" : "UMLAttribute",
+    "attributes" : [ {
+      "name" : "type",
+      "type" : {
+        "name" : "UMLClassifier",
+        "userDefined" : true
+      },
+      "modifier" : "+",
+      "list" : false
+    } ],
+    "operations" : [ {
+      "name" : "getType",
+      "type" : {
+        "name" : "UMLClassifier",
+        "userDefined" : true
+      },
+      "modifier" : "+",
+      "arguments" : [ ],
+      "list" : false
+    } ],
+    "generalizedAttributes" : [ {
+      "name" : "name",
+      "type" : {
+        "name" : "string",
+        "userDefined" : false
+      },
+      "modifier" : "+",
+      "list" : false
+    } ],
+    "generalizedOperations" : [ {
+      "name" : "Element",
+      "type" : {
+        "name" : "void",
+        "userDefined" : false
+      },
+      "modifier" : "+",
+      "arguments" : [ {
+        "name" : "name",
+        "type" : {
+          "name" : "string",
+          "userDefined" : false
+        },
+        "modifier" : "+",
+        "list" : false
+      } ],
+      "list" : false
+    }, {
+      "name" : "getName",
+      "type" : {
+        "name" : "string",
+        "userDefined" : false
+      },
+      "modifier" : "+",
+      "arguments" : [ ],
+      "list" : false
+    }, {
+      "name" : "rename",
+      "type" : {
+        "name" : "void",
+        "userDefined" : false
+      },
+      "modifier" : "+",
+      "arguments" : [ {
+        "name" : "name",
+        "type" : {
+          "name" : "string",
+          "userDefined" : false
+        },
+        "modifier" : "+",
+        "list" : false
+      } ],
+      "list" : false
+    } ],
+    "center" : {
+      "x" : 86.0,
+      "y" : 314.0
+    },
+    "north" : {
+      "x" : 162.5,
+      "y" : 314.0
+    },
+    "east" : {
+      "x" : 86.0,
+      "y" : 353.5
+    },
+    "south" : {
+      "x" : 162.5,
+      "y" : 393.0
+    },
+    "west" : {
+      "x" : 239.0,
+      "y" : 353.5
+    },
+    "height" : 79.0,
+    "width" : 153.0,
+    "abstract" : false,
+    "anchorPoints" : [ {
+      "x" : 162.5,
+      "y" : 314.0
+    }, {
+      "x" : 86.0,
+      "y" : 353.5
+    }, {
+      "x" : 162.5,
+      "y" : 393.0
+    }, {
+      "x" : 239.0,
+      "y" : 353.5
+    } ],
+    "userDefined" : true
+  } ],
+  "connections" : [ {
+    "type" : "Generalization",
+    "classFrom" : "UMLClassifier",
+    "classTo" : "Element",
+    "cardinalityFrom" : "*",
+    "cardinalityTo" : "*"
+  }, {
+    "type" : "Generalization",
+    "classFrom" : "UMLAttribute",
+    "classTo" : "Element",
+    "cardinalityFrom" : "*",
+    "cardinalityTo" : "*"
+  }, {
+    "type" : "Generalization",
+    "classFrom" : "ClassDiagram",
+    "classTo" : "Element",
+    "cardinalityFrom" : "*",
+    "cardinalityTo" : "*"
+  }, {
+    "type" : "Generalization",
+    "classFrom" : "UMLClass",
+    "classTo" : "UMLClassifier",
+    "cardinalityFrom" : "*",
+    "cardinalityTo" : "*"
+  }, {
+    "type" : "Association",
+    "classFrom" : "ClassDiagram",
+    "classTo" : "UMLClassifier",
+    "cardinalityFrom" : "*",
+    "cardinalityTo" : "*"
+  }, {
+    "type" : "Association",
+    "classFrom" : "UMLAttribute",
+    "classTo" : "UMLClassifier",
+    "cardinalityFrom" : "*",
+    "cardinalityTo" : "*"
+  }, {
+    "type" : "Association",
+    "classFrom" : "UMLClass",
+    "classTo" : "UMLAttribute",
+    "cardinalityFrom" : "*",
+    "cardinalityTo" : "*"
+  } ],
+  "accessMods" : [ "-", "#", "+", "~" ],
+  "connTypes" : [ "Association", "Aggregation", "Composition", "Generalization" ],
+  "connCardinalities" : [ "1", "0...1", "*", "1...*" ],
+  "sequenceDiagrams" : [ {
+    "name" : "S1",
+    "rowCount" : 11,
+    "colCount" : 4,
+    "classes" : [ {
+      "name" : "Main",
+      "start" : 0,
+      "end" : -1,
+      "error" : true
+    }, {
+      "name" : "ClassDiagram",
+      "start" : 0,
+      "end" : -1,
+      "error" : false
+    }, {
+      "name" : "UMLClass",
+      "start" : 2,
+      "end" : -1,
+      "error" : false
+    }, {
+      "name" : "UMLAttribute",
+      "start" : 6,
+      "end" : -1,
+      "error" : false
+    } ],
+    "connections" : [ {
+      "name" : "createClass(\"c1\")",
+      "type" : "Synchronous",
+      "colFrom" : 0,
+      "colTo" : 1
+    }, {
+      "name" : "<<create>>(\"c1)",
+      "type" : "Creation",
+      "colFrom" : 1,
+      "colTo" : 2
+    }, {
+      "name" : "c1",
+      "type" : "Return",
+      "colFrom" : 1,
+      "colTo" : 0
+    }, {
+      "name" : "classifierForName(\"int\")",
+      "type" : "Synchronous",
+      "colFrom" : 0,
+      "colTo" : 1
+    }, {
+      "name" : "cInt",
+      "type" : "Return",
+      "colFrom" : 1,
+      "colTo" : 0
+    }, {
+      "name" : "<<create>>(\"a1\", cInt)",
+      "type" : "Creation",
+      "colFrom" : 0,
+      "colTo" : 3
+    }, {
+      "name" : "addAttribute(a1)",
+      "type" : "Synchronous",
+      "colFrom" : 0,
+      "colTo" : 2
+    }, {
+      "name" : "true",
+      "type" : "Return",
+      "colFrom" : 2,
+      "colTo" : 0
+    }, {
+      "name" : "isAbstract()",
+      "type" : "Synchronous",
+      "colFrom" : 0,
+      "colTo" : 3
+    }, {
+      "name" : "false",
+      "type" : "Return",
+      "colFrom" : 3,
+      "colTo" : 0
+    } ],
+    "connectionTypes" : [ "Synchronous", "Asynchronous", "Return", "Creation", "Destruction" ]
+  }, {
+    "name" : "S2",
+    "rowCount" : 1,
+    "colCount" : 1,
+    "classes" : [ {
+      "name" : "Element",
+      "start" : 0,
+      "end" : -1,
+      "error" : false
+    } ],
+    "connections" : [ ],
+    "connectionTypes" : [ "Synchronous", "Asynchronous", "Return", "Creation", "Destruction" ]
+  } ]
+}

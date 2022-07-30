@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.input.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.ija.ija.MainScene">
+   <top>
+      <VBox prefHeight="0.0" prefWidth="1080.0" BorderPane.alignment="CENTER">
+         <children>
+            <MenuBar id="menu_bar">
+              <menus>
+                <Menu id="menu_file" mnemonicParsing="false" text="File">
+                  <items>
+                        <MenuItem id="menu_load" mnemonicParsing="false" onAction="#fileLoad" text="Load">
+                           <accelerator>
+                              <KeyCodeCombination alt="UP" code="L" control="DOWN" meta="UP" shift="UP" shortcut="UP" />
+                           </accelerator>
+                        </MenuItem>
+                    <MenuItem id="menu_save" mnemonicParsing="false" onAction="#fileSave" text="Save">
+                           <accelerator>
+                              <KeyCodeCombination alt="UP" code="S" control="DOWN" meta="UP" shift="UP" shortcut="UP" />
+                           </accelerator>
+                        </MenuItem>
+                        <SeparatorMenuItem mnemonicParsing="false" />
+                        <MenuItem id="menu_exit" mnemonicParsing="false" onAction="#exitProgram" text="Exit">
+                           <accelerator>
+                              <KeyCodeCombination alt="UP" code="X" control="DOWN" meta="UP" shift="UP" shortcut="UP" />
+                           </accelerator>
+                        </MenuItem>
+                  </items>
+                </Menu>
+                <Menu mnemonicParsing="false" text="Help">
+                  <items>
+                    <MenuItem id="menu_help" mnemonicParsing="false" onAction="#showHelp" text="Help">
+                           <accelerator>
+                              <KeyCodeCombination alt="UP" code="H" control="DOWN" meta="UP" shift="UP" shortcut="UP" />
+                           </accelerator>
+                        </MenuItem>
+                  </items>
+                </Menu>
+              </menus>
+            </MenuBar>
+         </children>
+      </VBox>
+   </top>
+   <bottom>
+      <ToolBar style="-fx-border-width: 1; -fx-border-color: grey transparent transparent transparent;" BorderPane.alignment="CENTER">
+        <items>
+          <Button id="create_class" fx:id="create_diagram" mnemonicParsing="false" onAction="#createDiagramButton" text="Create Diagram" />
+            <Button fx:id="add_class" mnemonicParsing="false" onAction="#addClassButton" text="Add Class" />
+            <Pane HBox.hgrow="ALWAYS" />
+            <Button id="switch_scene" fx:id="switch_scene" alignment="CENTER_RIGHT" mnemonicParsing="false" onAction="#switchView" text="Switch Scene" textAlignment="CENTER" />
+            <Separator orientation="VERTICAL" prefHeight="0.0" prefWidth="0.0" style="-fx-padding: 0 0 0 3;">
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets></Separator>
+            <Button fx:id="undo" mnemonicParsing="false" onAction="#undo" text="Undo" />
+        </items>
+      </ToolBar>
+   </bottom>
+   <right>
+      <ScrollPane fx:id="scroll" fitToHeight="true" fitToWidth="true" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" pannable="true" prefHeight="658.0" prefWidth="1156.0" BorderPane.alignment="CENTER">
+         <BorderPane.margin>
+            <Insets />
+         </BorderPane.margin>
+         <content>
+            <AnchorPane id="anchor" fx:id="anchor" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" />
+         </content>
+         <opaqueInsets>
+            <Insets />
+         </opaqueInsets>
+      </ScrollPane>
+   </right>
+</BorderPane>

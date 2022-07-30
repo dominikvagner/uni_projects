@@ -1,0 +1,7 @@
+!/build
+/build/*
+!/doc
+/doc/*
+!/dest
+/dest/*
+.idea/*
