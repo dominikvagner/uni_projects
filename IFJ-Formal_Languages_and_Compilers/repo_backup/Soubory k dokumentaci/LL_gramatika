@@ -1,0 +1,54 @@
+START                   ->          require "ifj21" MAIN_LIST eof
+MAIN_LIST 	            ->          function function_id (LIST_OF_PARAMS) RETURN_LIST_OF_TYPES STATEMENT end MAIN_NEXT
+MAIN_LIST	            ->          function_id(ENTRY_LIST_PARAMS) MAIN_NEXT
+MAIN_LIST	            ->          global function_id : function (LIST_OF_TYPES) RETURN_LIST_OF_TYPES MAIN_NEXT
+MAIN_NEXT               ->          MAIN_LIST
+MAIN_NEXT               ->      	ε
+LIST_OF_PARAMS	        ->          ε
+LIST_OF_PARAMS	        ->          value_id : TYPE_VALUE PARAM_NEXT
+PARAM_NEXT	            ->          , value_id : TYPE_VALUE PARAM_NEXT
+PARAM_NEXT	            ->          ε
+ENTRY_LIST_PARAMS	    ->          ENTRY_PARAM ENTRY_PARAM_NEXT
+ENTRY_LIST_PARAMS	    ->          ε
+ENTRY_PARAM	            ->          expression
+ENTRY_PARAM	            ->          value_id
+ENTRY_PARAM_NEXT	    ->          , ENTRY_PARAM ENTRY_PARAM_NEXT
+ENTRY_PARAM_NEXT	    ->          ε
+LIST_OF_TYPES	        ->          ε
+LIST_OF_TYPES	        ->          TYPE_VALUE TYPE_NEXT
+TYPE_NEXT	            ->          , TYPE_VALUE TYPE_NEXT
+TYPE_NEXT	            ->          ε
+RETURN_LIST_OF_TYPES    ->	        ε
+RETURN_LIST_OF_TYPES	->          : TYPE_VALUE RETURN_TYPE_NEXT
+RETURN_TYPE_NEXT	    ->          , TYPE_VALUE RETURN_TYPE_NEXT
+RETURN_TYPE_NEXT	    ->          ε
+STATEMENT       	    ->          value_id VALUE_ID_NEXT = INIT_VALUE INIT_VALUE_NEXT STATEMENT
+STATEMENT       	    ->          local value_id : TYPE_VALUE INIT_LOCAL_VALUE STATEMENT
+STATEMENT	            ->          function_id(ENTRY_LIST_PARAMS) STATEMENT
+STATEMENT        	    ->          if expression then STATEMENT STATE_ELSE end STATEMENT
+STATEMENT	            ->          return RETURN_LIST STATEMENT
+STATEMENT	            ->          while expression do STATEMENT end STATEMENT
+STATEMENT	            ->          ε
+RETURN_LIST    	        ->          ε
+RETURN_LIST    	        ->          function_id(ENTRY_LIST_PARAMS) RETURN_VALUE_NEXT
+RETURN_LIST             ->          value_id RETURN_VALUE_NEXT
+RETURN_LIST             ->          expression RETURN_VALUE_NEXT
+RETURN_VALUE_NEXT	    ->          , value_id RETURN_VALUE_NEXT
+RETURN_VALUE_NEXT       ->          , expression RETURN_VALUE_NEXT
+RETURN_VALUE_NEXT       ->          , function_id(ENTRY_LIST_PARAMS) RETURN_VALUE_NEXT
+RETURN_VALUE_NEXT	    ->          ε
+STATE_ELSE        	    ->          else STATEMENT
+STATE_ELSE        	    ->          ε
+INIT_VALUE	            ->          expression
+INIT_VALUE	            ->          function_id(ENTRY_LIST_PARAMS)
+INIT_VALUE	            ->          value_id
+INIT_VALUE_NEXT	        ->          ε
+INIT_VALUE_NEXT	        ->          , INIT_VALUE INIT_VALUE_NEXT
+INIT_LOCAL_VALUE        ->          ε
+INIT_LOCAL_VALUE        ->        	= INIT_VALUE
+VALUE_ID_NEXT	        ->          ε
+VALUE_ID_NEXT	        ->          , value_id VALUE_ID_NEXT
+TYPE_VALUE        	    ->          string
+TYPE_VALUE        	    ->          number
+TYPE_VALUE        	    ->          integer
+TYPE_VALUE        	    ->          nill

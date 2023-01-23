@@ -1,0 +1,210 @@
+digraph finite_state_machine { 
+	rankdir=LR; 
+        overlap = scaleyx;
+        splines = true;
+        //concentrate = true;
+	size="15,15";
+        node [shape = circle, width=2]; START;
+	node [shape = doublecircle, width= 1.5]; F_0 F_1 F_2 F_3 F_4 F_5 F_6 F_7 F_8 F_9 F_10 F_11 F_12 F_13 F_14 F_15 F_16 F_17 F_18 F_19 F_20 F_21 F_22 F_23 F_24 F_25 F_26 F_27 F_28; 
+	node [shape = circle, width= 1.5]; T_1 T_2 T_3 T_4 T_5 T_6 T_7 T_8 T_9 T_10 T_11 T_12 T_13 T_14 T_15 T_16 T_17 T_18;
+        START -> F_0 [label = " WHITESPACE "];
+        F_0 -> F_0 [label = " WHITESPACE "];
+        START -> F_1 [label = " - "];
+        F_1 -> T_1 [label = " - "];
+        T_1 -> T_1 [label = " Σ - EOL "];
+        T_1 -> START [label = " EOL "];
+        T_1 -> T_2 [label = " [ "];
+        T_2 -> START [label = " EOL   "];
+        T_2 -> T_3 [label = " [ "];
+        T_3 -> T_3 [label = " Σ - ] "];
+        T_3 -> T_4 [label = " ] "];
+        T_4 -> T_3 [label = " Σ - ] "];
+        T_4 -> START [label = " ] "];
+        START -> F_2 [label = " + "];
+        START -> F_3 [label = " * "];
+        START -> F_4 [label = " / "];
+        F_4 -> F_5 [label = " / "];
+        START -> F_6 [label = " # "];
+        START -> T_5 [label = " . "];
+        T_5 -> F_7 [label = " . "];
+        START -> F_8 [label = " ( "];
+        START -> F_9 [label = " ) "];
+        START -> F_10 [label = " : "];
+        START -> F_11 [label = " = "];
+        F_11 -> F_12 [label = " = "];
+        START -> T_6 [label = " ~ "];
+        T_6 -> F_13 [label = " = "];
+        START -> F_14 [label = " > "];
+        F_14 -> F_15 [label = " = "];
+        START -> F_16 [label = " < "];
+        F_16 -> F_17 [label = " = "];
+        START -> F_18 [label = " , "];
+        START -> F_19 [label = " _, a-z, A_Z "];
+        F_19 -> F_19 [label = " a-z, A_Z, 0-9 "];
+        START -> T_7 [label = " \" "];
+        T_7 -> F_20 [label = " \" "];
+        T_7:w -> T_7:w [label = " Σ >= 34 - \", \\ "];
+        T_7:s -> T_8 [label = " \\ "];
+        T_8:s -> T_7:sw [label = " \\, \", n, t "];
+        T_8 -> T_9 [label = " 0 "];
+        T_9 -> T_10 [label = " 0 "];
+        T_10 -> T_8:ne [label = " 1-9 "];
+        T_9 -> T_11 [label = " 1-9 "];
+        T_11 -> T_8 [label = " 0-9 "];
+        T_8 -> T_12 [label = " 1 "];
+        T_12 -> T_11 [label = " 0-9 "];
+        T_8 -> T_13 [label = " 2 "];
+        T_13 -> T_14 [label = " 0-4 "];
+        T_14 -> T_8 [label = " 0-9 "];
+        T_13 -> T_15 [label = " 5 "];
+        T_15 -> T_8 [label = " 0-5 "];
+        START -> F_21 [label = " 1-9 "];
+        F_21 -> F_21 [label = " 0-9 "];
+        START -> F_22 [label = " 0 "];
+        F_22:s -> T_17 [label = " x, X "];
+        F_22 -> F_22 [label = " 0-9 "]
+        T_17 -> F_24 [label = " 0-9, a-f, A-F "];
+        F_24 -> F_24 [label = " 0-9, a-f, A-F "];
+        F_21 -> T_16 [label = " . "];
+        F_22 -> T_16 [label = " . "];
+        T_16 -> F_23 [label = " 0-9 "];
+        F_23 -> F_23 [label = " 0-9 "];
+        F_21 -> F_25 [label = " e, E "];
+        F_22 -> F_25 [label = " e, E "];
+        F_23 -> F_25 [label = " e, E "];
+        F_25 -> T_18 [label = " +, - "];
+        F_25 -> F_26 [label = " 0-9 "];
+        T_18 -> F_26 [label = " 0-9 "];
+        F_26 -> F_26 [label = " 0-9 "];
+        START -> F_27 [label = " EOL "];
+        START -> F_28 [label = " EOF "];  
+        
+	graph [labelloc="b" labeljust="r" label=<
+	<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
+
+	<TR>
+        <TD><B>START</B> </TD><TD>S_START</TD>
+        <TD><B>T_1</B>  </TD><TD>S_COMMENT0</TD>
+        </TR>
+	<TR>
+        <TD><B>F_0</B>  </TD><TD>S_SPACE</TD>
+        <TD><B>T_2</B>  </TD><TD>S_COMMENT1</TD>
+        </TR>
+	<TR>
+        <TD><B>F_1</B>  </TD><TD>S_SUB</TD>
+        <TD><B>T_3</B>  </TD><TD>S_COMMENT2</TD>
+        </TR>
+        <TR>
+        <TD><B>F_2</B>  </TD><TD>S_ADD</TD>
+        <TD><B>T_4</B>  </TD><TD>S_COMMENT3</TD>
+        </TR>
+        <TR>
+        <TD><B>F_3</B>  </TD><TD>S_MUL</TD>
+        <TD><B>T_5</B>  </TD><TD>S_DOT0</TD>
+        </TR>
+        <TR>
+        <TD><B>F_4</B>  </TD><TD>S_DIV</TD>
+        <TD><B>T_6</B>  </TD><TD>S_TILDA</TD>
+        </TR>
+        <TR>
+        <TD><B>F_5</B>  </TD><TD>S_IDIV</TD>
+        <TD><B>T_7</B>  </TD><TD>S_STR_START</TD>
+        </TR>
+        <TR>
+        <TD><B>F_6</B>  </TD><TD>S_STRLEN</TD>
+        <TD><B>T_8</B>  </TD><TD>S_STR_T1</TD>
+        </TR>
+        <TR>
+        <TD><B>F_7</B>  </TD><TD>S_DOT1</TD>
+        <TD><B>T_9</B>  </TD><TD>S_STR_T2</TD>
+        </TR>
+        <TR>
+        <TD><B>F_8</B>  </TD><TD>S_LEFT_PAR</TD>
+        <TD><B>T_10</B>  </TD><TD>S_STR_T3</TD>
+        </TR>
+        <TR>
+        <TD><B>F_9</B>  </TD><TD>S_RIGHT_PAR</TD>
+        <TD><B>T_11</B>  </TD><TD>S_STR_T4</TD>
+        </TR>
+        <TR>
+        <TD><B>F_10</B> </TD><TD>S_DOUBLE_DOT</TD>
+        <TD><B>T_12</B>  </TD><TD>S_STR_T5</TD>
+        </TR>
+        <TR>
+        <TD><B>F_11</B> </TD><TD>S_ASSIGN</TD>
+        <TD><B>T_13</B>  </TD><TD>S_STR_T6</TD>
+        </TR>
+        <TR>
+        <TD><B>F_12</B> </TD><TD>S_EQL</TD>
+        <TD><B>T_14</B>  </TD><TD>S_STR_T7</TD>
+        </TR>
+        <TR>
+        <TD><B>F_13</B> </TD><TD>S_NEQL</TD>
+        <TD><B>T_15</B>  </TD><TD>S_STR_T8</TD>
+        </TR>
+        <TR>
+        <TD><B>F_14</B> </TD><TD>S_GT</TD>
+        <TD><B>T_16</B>  </TD><TD>S_FP_DOT</TD>
+        </TR>
+        <TR>
+        <TD><B>F_15</B> </TD><TD>S_GTE</TD>
+        <TD><B>T_17</B>  </TD><TD>S_HEX0</TD>
+        </TR>
+        <TR>
+        <TD><B>F_16</B> </TD><TD>S_LT</TD>
+        <TD><B>T_18</B>  </TD><TD>S_EXP_1</TD>
+        </TR>
+        <TR>
+        <TD><B>F_17</B> </TD><TD>S_LTE</TD>
+        </TR>
+        <TR>
+        <TD><B>F_18</B> </TD><TD>S_COMMA</TD>
+        </TR>
+        <TR>
+        <TD><B>F_19</B> </TD><TD>S_ID</TD>
+        </TR>
+        <TR>
+        <TD><B>F_20</B> </TD><TD>S_STR_FIN</TD>
+        </TR>
+        <TR>
+        <TD><B>F_21</B> </TD><TD>S_INT</TD>
+        </TR>
+        <TR>
+        <TD><B>F_22</B> </TD><TD>S_INT0</TD>
+        </TR>
+        <TR>
+        <TD><B>F_23</B> </TD><TD>S_NUMBER</TD>
+        </TR>
+        <TR>
+        <TD><B>F_24</B> </TD><TD>S_HEX1</TD>
+        </TR>
+        <TR>
+        <TD><B>F_25</B> </TD><TD>S_EXP0</TD>
+        </TR>
+        <TR>
+        <TD><B>F_26</B> </TD><TD>S_EXP2</TD>
+        </TR>
+        <TR>
+        <TD><B>F_27</B> </TD><TD>S_EOL</TD>
+        </TR>
+        <TR>
+        <TD><B>F_28</B> </TD><TD>S_EOF</TD>
+        </TR>
+
+        </TABLE>>
+        
+        
+        ];
+
+
+} 
+
+
+
+
+/*
+F_1 - MINUS
+F_2 - COMMENT
+Σ
+Σ
+*/
