@@ -11,8 +11,6 @@ Each subject should have a description of its projects (bigger projects have the
     Used or required technologies/languages/skills.
     Earned points.
 
-There is also a big team project from a class on compilers and formal languges [here](https://github.com/IFJ017-2021/IFJ).
-
 <!---
 # Project Title
 
