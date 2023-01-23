@@ -1,0 +1,706 @@
+<!DOCTYPE html>
+<!-- saved from url=(0089)https://www.fit.vutbr.cz/study/courses/IOS/private/Lab/projekty/projekt1/projekt1.html.cs -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+      
+      <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+      <meta name="generator" content="pandoc">
+      
+      
+      <title>1. Úloha IOS (2021)</title>
+      <!-- Bootstrap -->
+      <link rel="stylesheet" href="./1. Úloha IOS (2021)_files/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+      <!-- Font-awesome -->
+      <link rel="stylesheet" href="./1. Úloha IOS (2021)_files/font-awesome.min.css">
+      <!-- Styles -->
+      <link rel="stylesheet" href="./1. Úloha IOS (2021)_files/styles.css">
+            <!-- Add favicon here -->
+            <!-- Add site-verifications here -->
+         <style type="text/css">.CtxtMenu_InfoClose {  top:.2em; right:.2em;}
+.CtxtMenu_InfoContent {  overflow:auto; text-align:left; font-size:80%;  padding:.4em .6em; border:1px inset; margin:1em 0px;  max-height:20em; max-width:30em; background-color:#EEEEEE;  white-space:normal;}
+.CtxtMenu_Info.CtxtMenu_MousePost {outline:none;}
+.CtxtMenu_Info {  position:fixed; left:50%; width:auto; text-align:center;  border:3px outset; padding:1em 2em; background-color:#DDDDDD;  color:black;  cursor:default; font-family:message-box; font-size:120%;  font-style:normal; text-indent:0; text-transform:none;  line-height:normal; letter-spacing:normal; word-spacing:normal;  word-wrap:normal; white-space:nowrap; float:none; z-index:201;  border-radius: 15px;                     /* Opera 10.5 and IE9 */  -webkit-border-radius:15px;               /* Safari and Chrome */  -moz-border-radius:15px;                  /* Firefox */  -khtml-border-radius:15px;                /* Konqueror */  box-shadow:0px 10px 20px #808080;         /* Opera 10.5 and IE9 */  -webkit-box-shadow:0px 10px 20px #808080; /* Safari 3 & Chrome */  -moz-box-shadow:0px 10px 20px #808080;    /* Forefox 3.5 */  -khtml-box-shadow:0px 10px 20px #808080;  /* Konqueror */  filter:progid:DXImageTransform.Microsoft.dropshadow(OffX=2, OffY=2, Color="gray", Positive="true"); /* IE */}
+</style><style type="text/css">.CtxtMenu_MenuClose {  position:absolute;  cursor:pointer;  display:inline-block;  border:2px solid #AAA;  border-radius:18px;  -webkit-border-radius: 18px;             /* Safari and Chrome */  -moz-border-radius: 18px;                /* Firefox */  -khtml-border-radius: 18px;              /* Konqueror */  font-family: "Courier New", Courier;  font-size:24px;  color:#F0F0F0}
+.CtxtMenu_MenuClose span {  display:block; background-color:#AAA; border:1.5px solid;  border-radius:18px;  -webkit-border-radius: 18px;             /* Safari and Chrome */  -moz-border-radius: 18px;                /* Firefox */  -khtml-border-radius: 18px;              /* Konqueror */  line-height:0;  padding:8px 0 6px     /* may need to be browser-specific */}
+.CtxtMenu_MenuClose:hover {  color:white!important;  border:2px solid #CCC!important}
+.CtxtMenu_MenuClose:hover span {  background-color:#CCC!important}
+.CtxtMenu_MenuClose:hover:focus {  outline:none}
+</style><style type="text/css">.CtxtMenu_Menu {  position:absolute;  background-color:white;  color:black;  width:auto; padding:5px 0px;  border:1px solid #CCCCCC; margin:0; cursor:default;  font: menu; text-align:left; text-indent:0; text-transform:none;  line-height:normal; letter-spacing:normal; word-spacing:normal;  word-wrap:normal; white-space:nowrap; float:none; z-index:201;  border-radius: 5px;                     /* Opera 10.5 and IE9 */  -webkit-border-radius: 5px;             /* Safari and Chrome */  -moz-border-radius: 5px;                /* Firefox */  -khtml-border-radius: 5px;              /* Konqueror */  box-shadow:0px 10px 20px #808080;         /* Opera 10.5 and IE9 */  -webkit-box-shadow:0px 10px 20px #808080; /* Safari 3 & Chrome */  -moz-box-shadow:0px 10px 20px #808080;    /* Forefox 3.5 */  -khtml-box-shadow:0px 10px 20px #808080;  /* Konqueror */}
+.CtxtMenu_MenuItem {  padding: 1px 2em;  background:transparent;}
+.CtxtMenu_MenuArrow {  position:absolute; right:.5em; padding-top:.25em; color:#666666;  font-family: null; font-size: .75em}
+.CtxtMenu_MenuActive .CtxtMenu_MenuArrow {color:white}
+.CtxtMenu_MenuArrow.CtxtMenu_RTL {left:.5em; right:auto}
+.CtxtMenu_MenuCheck {  position:absolute; left:.7em;  font-family: null}
+.CtxtMenu_MenuCheck.CtxtMenu_RTL { right:.7em; left:auto }
+.CtxtMenu_MenuRadioCheck {  position:absolute; left: .7em;}
+.CtxtMenu_MenuRadioCheck.CtxtMenu_RTL {  right: .7em; left:auto}
+.CtxtMenu_MenuInputBox {  padding-left: 1em; right:.5em; color:#666666;  font-family: null;}
+.CtxtMenu_MenuInputBox.CtxtMenu_RTL {  left: .1em;}
+.CtxtMenu_MenuComboBox {  left:.1em; padding-bottom:.5em;}
+.CtxtMenu_MenuSlider {  left: .1em;}
+.CtxtMenu_SliderValue {  position:absolute; right:.1em; padding-top:.25em; color:#333333;  font-size: .75em}
+.CtxtMenu_SliderBar {  outline: none; background: #d3d3d3}
+.CtxtMenu_MenuLabel {  padding: 1px 2em 3px 1.33em;  font-style:italic}
+.CtxtMenu_MenuRule {  border-top: 1px solid #DDDDDD;  margin: 4px 3px;}
+.CtxtMenu_MenuDisabled {  color:GrayText}
+.CtxtMenu_MenuActive {  background-color: #606872;  color: white;}
+.CtxtMenu_MenuDisabled:focus {  background-color: #E8E8E8}
+.CtxtMenu_MenuLabel:focus {  background-color: #E8E8E8}
+.CtxtMenu_ContextMenu:focus {  outline:none}
+.CtxtMenu_ContextMenu .CtxtMenu_MenuItem:focus {  outline:none}
+.CtxtMenu_SelectionMenu {  position:relative; float:left;  border-bottom: none; -webkit-box-shadow:none; -webkit-border-radius:0px; }
+.CtxtMenu_SelectionItem {  padding-right: 1em;}
+.CtxtMenu_Selection {  right: 40%; width:50%; }
+.CtxtMenu_SelectionBox {  padding: 0em; max-height:20em; max-width: none;  background-color:#FFFFFF;}
+.CtxtMenu_SelectionDivider {  clear: both; border-top: 2px solid #000000;}
+.CtxtMenu_Menu .CtxtMenu_MenuClose {  top:-10px; left:-10px}
+</style><style id="MJX-CHTML-styles">
+mjx-container[jax="CHTML"] {
+  line-height: 0;
+}
+
+mjx-container [space="1"] {
+  margin-left: .111em;
+}
+
+mjx-container [space="2"] {
+  margin-left: .167em;
+}
+
+mjx-container [space="3"] {
+  margin-left: .222em;
+}
+
+mjx-container [space="4"] {
+  margin-left: .278em;
+}
+
+mjx-container [space="5"] {
+  margin-left: .333em;
+}
+
+mjx-container [rspace="1"] {
+  margin-right: .111em;
+}
+
+mjx-container [rspace="2"] {
+  margin-right: .167em;
+}
+
+mjx-container [rspace="3"] {
+  margin-right: .222em;
+}
+
+mjx-container [rspace="4"] {
+  margin-right: .278em;
+}
+
+mjx-container [rspace="5"] {
+  margin-right: .333em;
+}
+
+mjx-container [size="s"] {
+  font-size: 70.7%;
+}
+
+mjx-container [size="ss"] {
+  font-size: 50%;
+}
+
+mjx-container [size="Tn"] {
+  font-size: 60%;
+}
+
+mjx-container [size="sm"] {
+  font-size: 85%;
+}
+
+mjx-container [size="lg"] {
+  font-size: 120%;
+}
+
+mjx-container [size="Lg"] {
+  font-size: 144%;
+}
+
+mjx-container [size="LG"] {
+  font-size: 173%;
+}
+
+mjx-container [size="hg"] {
+  font-size: 207%;
+}
+
+mjx-container [size="HG"] {
+  font-size: 249%;
+}
+
+mjx-container [width="full"] {
+  width: 100%;
+}
+
+mjx-box {
+  display: inline-block;
+}
+
+mjx-block {
+  display: block;
+}
+
+mjx-itable {
+  display: inline-table;
+}
+
+mjx-row {
+  display: table-row;
+}
+
+mjx-row > * {
+  display: table-cell;
+}
+
+mjx-mtext {
+  display: inline-block;
+}
+
+mjx-mstyle {
+  display: inline-block;
+}
+
+mjx-merror {
+  display: inline-block;
+  color: red;
+  background-color: yellow;
+}
+
+mjx-mphantom {
+  visibility: hidden;
+}
+
+mjx-assistive-mml {
+  position: absolute !important;
+  top: 0px;
+  left: 0px;
+  clip: rect(1px, 1px, 1px, 1px);
+  padding: 1px 0px 0px 0px !important;
+  border: 0px !important;
+  display: block !important;
+  width: auto !important;
+  overflow: hidden !important;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+mjx-assistive-mml[display="block"] {
+  width: 100% !important;
+}
+
+mjx-c::before {
+  display: block;
+  width: 0;
+}
+
+.MJX-TEX {
+  font-family: MJXZERO, MJXTEX;
+}
+
+.TEX-B {
+  font-family: MJXZERO, MJXTEX-B;
+}
+
+.TEX-I {
+  font-family: MJXZERO, MJXTEX-I;
+}
+
+.TEX-MI {
+  font-family: MJXZERO, MJXTEX-MI;
+}
+
+.TEX-BI {
+  font-family: MJXZERO, MJXTEX-BI;
+}
+
+.TEX-S1 {
+  font-family: MJXZERO, MJXTEX-S1;
+}
+
+.TEX-S2 {
+  font-family: MJXZERO, MJXTEX-S2;
+}
+
+.TEX-S3 {
+  font-family: MJXZERO, MJXTEX-S3;
+}
+
+.TEX-S4 {
+  font-family: MJXZERO, MJXTEX-S4;
+}
+
+.TEX-A {
+  font-family: MJXZERO, MJXTEX-A;
+}
+
+.TEX-C {
+  font-family: MJXZERO, MJXTEX-C;
+}
+
+.TEX-CB {
+  font-family: MJXZERO, MJXTEX-CB;
+}
+
+.TEX-FR {
+  font-family: MJXZERO, MJXTEX-FR;
+}
+
+.TEX-FRB {
+  font-family: MJXZERO, MJXTEX-FRB;
+}
+
+.TEX-SS {
+  font-family: MJXZERO, MJXTEX-SS;
+}
+
+.TEX-SSB {
+  font-family: MJXZERO, MJXTEX-SSB;
+}
+
+.TEX-SSI {
+  font-family: MJXZERO, MJXTEX-SSI;
+}
+
+.TEX-SC {
+  font-family: MJXZERO, MJXTEX-SC;
+}
+
+.TEX-T {
+  font-family: MJXZERO, MJXTEX-T;
+}
+
+.TEX-V {
+  font-family: MJXZERO, MJXTEX-V;
+}
+
+.TEX-VB {
+  font-family: MJXZERO, MJXTEX-VB;
+}
+
+mjx-stretchy-v mjx-c, mjx-stretchy-h mjx-c {
+  font-family: MJXZERO, MJXTEX-S1, MJXTEX-S4, MJXTEX, MJXTEX-A ! important;
+}
+
+@font-face /* 0 */ {
+  font-family: MJXZERO;
+  src: url("https://cdn.jsdelivr.net/npm/mathjax@3/es5/output/chtml/fonts/woff-v2/MathJax_Zero.woff") format("woff");
+}
+
+@font-face /* 1 */ {
+  font-family: MJXTEX;
+  src: url("https://cdn.jsdelivr.net/npm/mathjax@3/es5/output/chtml/fonts/woff-v2/MathJax_Main-Regular.woff") format("woff");
+}
+
+@font-face /* 2 */ {
+  font-family: MJXTEX-B;
+  src: url("https://cdn.jsdelivr.net/npm/mathjax@3/es5/output/chtml/fonts/woff-v2/MathJax_Main-Bold.woff") format("woff");
+}
+
+@font-face /* 3 */ {
+  font-family: MJXTEX-I;
+  src: url("https://cdn.jsdelivr.net/npm/mathjax@3/es5/output/chtml/fonts/woff-v2/MathJax_Math-Italic.woff") format("woff");
+}
+
+@font-face /* 4 */ {
+  font-family: MJXTEX-MI;
+  src: url("https://cdn.jsdelivr.net/npm/mathjax@3/es5/output/chtml/fonts/woff-v2/MathJax_Main-Italic.woff") format("woff");
+}
+
+@font-face /* 5 */ {
+  font-family: MJXTEX-BI;
+  src: url("https://cdn.jsdelivr.net/npm/mathjax@3/es5/output/chtml/fonts/woff-v2/MathJax_Math-BoldItalic.woff") format("woff");
+}
+
+@font-face /* 6 */ {
+  font-family: MJXTEX-S1;
+  src: url("https://cdn.jsdelivr.net/npm/mathjax@3/es5/output/chtml/fonts/woff-v2/MathJax_Size1-Regular.woff") format("woff");
+}
+
+@font-face /* 7 */ {
+  font-family: MJXTEX-S2;
+  src: url("https://cdn.jsdelivr.net/npm/mathjax@3/es5/output/chtml/fonts/woff-v2/MathJax_Size2-Regular.woff") format("woff");
+}
+
+@font-face /* 8 */ {
+  font-family: MJXTEX-S3;
+  src: url("https://cdn.jsdelivr.net/npm/mathjax@3/es5/output/chtml/fonts/woff-v2/MathJax_Size3-Regular.woff") format("woff");
+}
+
+@font-face /* 9 */ {
+  font-family: MJXTEX-S4;
+  src: url("https://cdn.jsdelivr.net/npm/mathjax@3/es5/output/chtml/fonts/woff-v2/MathJax_Size4-Regular.woff") format("woff");
+}
+
+@font-face /* 10 */ {
+  font-family: MJXTEX-A;
+  src: url("https://cdn.jsdelivr.net/npm/mathjax@3/es5/output/chtml/fonts/woff-v2/MathJax_AMS-Regular.woff") format("woff");
+}
+
+@font-face /* 11 */ {
+  font-family: MJXTEX-C;
+  src: url("https://cdn.jsdelivr.net/npm/mathjax@3/es5/output/chtml/fonts/woff-v2/MathJax_Calligraphic-Regular.woff") format("woff");
+}
+
+@font-face /* 12 */ {
+  font-family: MJXTEX-CB;
+  src: url("https://cdn.jsdelivr.net/npm/mathjax@3/es5/output/chtml/fonts/woff-v2/MathJax_Calligraphic-Bold.woff") format("woff");
+}
+
+@font-face /* 13 */ {
+  font-family: MJXTEX-FR;
+  src: url("https://cdn.jsdelivr.net/npm/mathjax@3/es5/output/chtml/fonts/woff-v2/MathJax_Fraktur-Regular.woff") format("woff");
+}
+
+@font-face /* 14 */ {
+  font-family: MJXTEX-FRB;
+  src: url("https://cdn.jsdelivr.net/npm/mathjax@3/es5/output/chtml/fonts/woff-v2/MathJax_Fraktur-Bold.woff") format("woff");
+}
+
+@font-face /* 15 */ {
+  font-family: MJXTEX-SS;
+  src: url("https://cdn.jsdelivr.net/npm/mathjax@3/es5/output/chtml/fonts/woff-v2/MathJax_SansSerif-Regular.woff") format("woff");
+}
+
+@font-face /* 16 */ {
+  font-family: MJXTEX-SSB;
+  src: url("https://cdn.jsdelivr.net/npm/mathjax@3/es5/output/chtml/fonts/woff-v2/MathJax_SansSerif-Bold.woff") format("woff");
+}
+
+@font-face /* 17 */ {
+  font-family: MJXTEX-SSI;
+  src: url("https://cdn.jsdelivr.net/npm/mathjax@3/es5/output/chtml/fonts/woff-v2/MathJax_SansSerif-Italic.woff") format("woff");
+}
+
+@font-face /* 18 */ {
+  font-family: MJXTEX-SC;
+  src: url("https://cdn.jsdelivr.net/npm/mathjax@3/es5/output/chtml/fonts/woff-v2/MathJax_Script-Regular.woff") format("woff");
+}
+
+@font-face /* 19 */ {
+  font-family: MJXTEX-T;
+  src: url("https://cdn.jsdelivr.net/npm/mathjax@3/es5/output/chtml/fonts/woff-v2/MathJax_Typewriter-Regular.woff") format("woff");
+}
+
+@font-face /* 20 */ {
+  font-family: MJXTEX-V;
+  src: url("https://cdn.jsdelivr.net/npm/mathjax@3/es5/output/chtml/fonts/woff-v2/MathJax_Vector-Regular.woff") format("woff");
+}
+
+@font-face /* 21 */ {
+  font-family: MJXTEX-VB;
+  src: url("https://cdn.jsdelivr.net/npm/mathjax@3/es5/output/chtml/fonts/woff-v2/MathJax_Vector-Bold.woff") format("woff");
+}
+</style></head>
+   <body>
+            <div class="container">
+         <h1 class="title">1. Úloha IOS (2021)</h1>
+                  <div class="row">
+            <div class="col-xl-10"><h1 id="popis-úlohy">Popis úlohy</h1>
+<p>Cílem úlohy je vytvořit skript pro analýzu záznamu systému pro obchodování na burze. Skript bude filtrovat záznamy a poskytovat statistiky podle zadání úživatele.</p>
+<h1 id="zjednodušený-úvod-do-problematiky">Zjednodušený úvod do problematiky</h1>
+<p>Na burze se obchoduje s cennými papíry (např. akcie společností, dluhopisy), komoditami (např. ropa, zelí) apod. Každý obchodovaný artikl má jednoznačný identifikátor, tzv. <em>ticker</em> (např. akcie firmy Intel mají na burze NASDAQ ticker <code>INTC</code>, bitcoin může mít přiřazený ticker <code>BTC</code>). Cena artiklů se mění v čase. Obchodník na burze vstupuje do <em>pozic</em>, buď tak, že koupí artikl a očekává, že jeho cena poroste, aby jej pak prodal za vyšší cenu (tzv. <em>dlouhá</em> pozice), nebo že artikl prodá a očekává, že jeho cena klesne, aby jej poté mohl koupit levněji (tzv. <em>krátká</em> pozice). Obchodník může prodat i artikl, který právě nevlastní (v reálu to funguje tak, že si ho od někoho, kdo ho vlastní, “vypůjčí”, prodá jej, a potom ho koupí za nižší cenu a “vrátí”). V našem případě budeme uvažovat, že obchodníkův systém posílá na burzu příkazy k <em>nákupu</em> (<code>buy</code>) nebo <em>prodeji</em> (<code>sell</code>) určitého množství jednotek artiklu označeného nějakým tickerem.</p>
+<h1 id="specifikace-rozhraní-skriptu">Specifikace rozhraní skriptu</h1>
+<p><strong>JMÉNO</strong></p>
+<ul>
+<li><code>tradelog</code> - analyzátor logů z obchodování na burze</li>
+</ul>
+<p><strong>POUŽITÍ</strong></p>
+<ul>
+<li><code>tradelog [-h|--help] [FILTR] [PŘÍKAZ] [LOG [LOG2 [...]]</code></li>
+</ul>
+<p><strong>VOLBY</strong></p>
+<ul>
+<li><code>PŘÍKAZ</code> může být jeden z:
+<ul>
+<li><code>list-tick</code> – výpis seznamu vyskytujících se burzovních symbolů, tzv. “tickerů”.</li>
+<li><code>profit</code> – výpis celkového zisku z uzavřených pozic.</li>
+<li><code>pos</code> – výpis hodnot aktuálně držených pozic seřazených sestupně dle hodnoty.</li>
+<li><code>last-price</code> – výpis poslední známé ceny pro každý ticker.</li>
+<li><code>hist-ord</code> – výpis histogramu počtu transakcí dle tickeru.</li>
+<li><code>graph-pos</code> – výpis grafu hodnot držených pozic dle tickeru.</li>
+</ul></li>
+<li><code>FILTR</code> může být kombinace následujících:
+<ul>
+<li><code>-a DATETIME</code> – after: jsou uvažovány pouze záznamy PO tomto datu (bez tohoto data). <code>DATETIME</code> je formátu <code>YYYY-MM-DD HH:MM:SS</code>.</li>
+<li><code>-b DATETIME</code> – before: jsou uvažovány pouze záznamy PŘED tímto datem (bez tohoto data).</li>
+<li><code>-t TICKER</code> – jsou uvažovány pouze záznamy odpovídající danému tickeru. Při více výskytech přepínače se bere množina všech uvedených tickerů.</li>
+<li><code>-w WIDTH</code> – u výpisu grafů nastavuje jejich šířku, tedy délku nejdelšího řádku na <code>WIDTH</code>. Tedy, <code>WIDTH</code> musí být kladné celé číslo. Více výskytů přepínače je chybné spuštění.</li>
+</ul></li>
+<li><code>-h</code> a <code>--help</code> vypíšou nápovědu s krátkým popisem každého příkazu a přepínače.</li>
+</ul>
+<h1 id="popis">Popis</h1>
+<ol type="1">
+<li>Skript filtruje záznamy z nástroje pro obchodování na burze. Pokud je skriptu zadán také příkaz, nad filtrovanými záznamy daný příkaz provede.</li>
+<li>Pokud skript nedostane ani filtr ani příkaz, opisuje záznamy na standardní výstup.</li>
+<li>Skript umí zpracovat i záznamy komprimované pomocí nástroje gzip (v případě, že název souboru končí <code>.gz</code>).</li>
+<li>V případě, že skript na příkazové řádce nedostane soubory se záznamy (<code>LOG</code>, <code>LOG2</code> …), očekává záznamy na standardním vstupu.</li>
+<li>Pokud má skript vypsat seznam, každá položka je vypsána na jeden řádek a pouze jednou. Není-li uvedeno jinak, je pořadí řádků dáno abecedně dle tickerů. Položky se nesmí opakovat.</li>
+<li>Grafy jsou vykresleny pomocí ASCII a jsou otočené doprava. Každý řádek histogramu udává ticker. Kladná hodnota či četnost jsou vyobrazeny posloupností znaku mřížky <code>#</code>, záporná hodnota (u <code>graph-pos</code>) je vyobrazena posloupností znaku vykřičníku <code>!</code>.</li>
+</ol>
+<h1 id="podrobné-požadavky">Podrobné požadavky</h1>
+<ol type="1">
+<li><p>Skript analyzuje záznamy (logy) pouze ze zadaných souborů v daném pořadí.</p></li>
+<li><p>Formát logu je CSV kde oddělovačem je znak středníku <code>;</code>. Formát je řádkový, každý řádek odpovídá záznamu o jedné transakci ve tvaru</p>
+<pre><code>DATUM A CAS;TICKER;TYP TRANSAKCE;JEDNOTKOVA CENA;MENA;OBJEM;ID</code></pre>
+<p>kde</p>
+<ul>
+<li><code>DATUM A CAS</code> jsou ve formátu <code>YYYY-MM-DD HH:MM:SS</code></li>
+<li><code>TICKER</code> je řetězec neobsahující bílé znaky a znak středníku</li>
+<li><code>TYP TRANSAKCE</code> nabývá hodnoty <code>buy</code> nebo <code>sell</code> značící nákup resp. prodej</li>
+<li><code>JEDNOTKOVA CENA</code> je cena za jednu akcii, jednotku komodity, atp. s přesností na maximálně dvě desetinná místa; jako oddělovač jednotek a desetin slouží znak tečky <code>.</code>; Např. <code>1234567.89</code></li>
+<li><code>MENA</code> je třípísmenný kód měny, např <code>USD</code>, <code>EUR</code>, <code>CZK</code>, <code>SEK</code>, <code>GBP</code> atd.</li>
+<li><code>OBJEM</code> značí množství jednotek (akcií, jednotek komodity atp.) v transakci</li>
+<li><code>ID</code> je identifikátor transakce (řetězec neobsahující bílé znaky a znak středníku)</li>
+</ul>
+<p><em>Hodnota transakce</em> je <code>JEDNOTKOVA CENA</code> * <code>OBJEM</code>. Příklad záznamů:</p>
+<pre><code>2021-07-29 23:43:13;TSM;buy;667.90;USD;306;65fb53f6-7943-11eb-80cb-8c85906a186d
+2021-07-29 23:43:15;BTC;sell;50100;USD;5;65467d26-7943-11eb-80cb-8c85906a186d</code></pre>
+<ul>
+<li>První záznam značí nákup 306 akcií firmy TSMC (ticker <code>TSM</code>) za cenu 667.90 USD / akcie. Hodnota transakce je tedy 204377.40 USD.</li>
+<li>Druhý záznam značí prodej 5 bitcoinů (ticker <code>BTC</code>) za cenu 50 100 USD / bitcoin. Hodnota transakce je tedy 250500.00 USD.</li>
+</ul></li>
+<li><p>Předpokládejte, že měna je u všech záznamů stejná (není potřeba ověřovat).</p></li>
+<li><p>Skript žádný soubor nemodifikuje. Skript nepoužívá dočasné soubory.</p></li>
+<li><p>Můžete předpokládat, že záznamy jsou ve vstupních souborech uvedeny chronologicky a je-li na vstupu více souborů, jejich pořadí je také chronologické.</p></li>
+<li><p><em>Celkový zisk z uzavřených pozic</em> (příkaz <code>profit</code>) se spočítá jako <em>suma hodnot <code>sell</code> transakcí</em> - <em>suma hodnot <code>buy</code> transakcí</em>.</p></li>
+<li><p><em>Hodnota aktuálně držených pozic</em> (příkazy <code>pos</code> a <code>graph-pos</code>) se pro každý ticker spočítá jako <em>počet držených jednotek</em> * <em>jednotková cena z poslední transakce,</em> kde <em>počet držených jednotek</em> je dán jako <em>suma objemů <code>buy</code> transakcí</em> - <em>suma objemů <code>sell</code> transakcí</em>.</p></li>
+<li><p>Pokud není při použití příkazu <code>hist-ord</code> uvedena šířka <code>WIDTH</code>, pak každá pozice v histogramu odpovídá jedné transakci.</p></li>
+<li><p>Pokud není při použití příkazu <code>graph-pos</code> uvedena šířka <code>WIDTH</code>, pak každá pozice v histogramu odpovídá hodnotě 1000 (zaokrouhleno na tisíce směrem k nule, tj. hodnota 2000 bude reprezentována jako <code>##</code> zatímco hodnota 1999.99 jako <code>#</code> a hodnota -1999.99 jako <code>!</code>.</p></li>
+<li><p>U příkazů <code>hist-ord</code> a <code>graph-pos</code> s uvedenou šířkou <code>WIDTH</code> při dělení zaokrouhlujte směrem k nule (tedy např. při <code>graph-pos -w 6</code> a nejdelším řádku s hodnotou 1234 bude řádek s hodnotou 1234 vypadat takto <code>######</code>, řádek s hodnotou 1233.99 takto <code>#####</code> a řádek s hodnotou -1233.99 takto <code>!!!!!</code>).</p></li>
+<li><p>Pořadí argumentů stačí uvažovat takové, že nejřív budou všechny přepínače, pak (volitelně) příkaz a nakonec seznam vstupních souborů (lze tedy použít <code>getopts</code>). Podpora argumentů v libovolném pořadí je nepovinné rozšíření, jehož implementace může kompenzovat případnou ztrátu bodů v jiné časti projektu.</p></li>
+<li><p>Předpokládejte, že vstupní soubory nemůžou mít jména odpovídající některému příkazu nebo přepínači.</p></li>
+<li><p>V případě uvedení přepínače <code>-h</code> nebo <code>--help</code> se vždy pouze vypíše nápověda a skript skončí (tedy, pokud by za přepínačem následoval nějaký příkaz nebo soubor, neprovede se).</p></li>
+<li><p>Při výpisu pomocí příkazů <code>pos</code>, <code>last-price</code>, <code>hist-ord</code> a <code>graph-pos</code> musí být tickery zarovnány doleva a dvojtečka na 11. pozici na řádku (výplň proveďte pomocí mezer). U příkazů <code>hist-ord</code> a <code>graph-pos</code> je za dvojtečkou na všech řádcích právě jedna mezera (případně žádná, pokud v pravém sloupci daného řádku nic není), u příkazů <code>pos</code> a <code>last-price</code> jsou hodnoty v pravé části výpisu formátovány tak, aby (v případě neprázdného výpisu) byla na řádku s nejdelší řetězcovou reprezentací hodnoty (tj. včetně znaménka) mezi dvojtečkou a hodnotou právě jedna mezera a ostatní řádky byly zarovnány doprava vzhledem k délce tohoto řádku (vizte příklady výpisů níže).</p></li>
+</ol>
+<h1 id="návratová-hodnota">Návratová hodnota</h1>
+<ul>
+<li>Skript vrací úspěch v případě úspěšné operace. Interní chyba skriptu nebo chybné argumenty budou doprovázeny chybovým hlášením a neúspěšným návratovým kódem.</li>
+</ul>
+<h1 id="implementační-detaily">Implementační detaily</h1>
+<ol type="1">
+<li><p>Skript by měl mít v celém běhu nastaveno <code>POSIXLY_CORRECT=yes</code>.</p></li>
+<li><p>Skript by měl běžet na všech běžných shellech (<code>dash</code>, <code>ksh</code>, <code>bash</code>). Pokud použijete vlastnost specifickou pro nějaký shell, uveďte to pomocí direktivy interpretu na prvním řádku souboru, např. <code>#!/bin/bash</code> nebo <code>#!/usr/bin/env bash</code> pro <code>bash</code>. Můžete použít GNU rozšíření pro <code>sed</code> či <code>awk</code>. Jazyky Perl, Python, Ruby, atd. povoleny nejsou.</p>
+<p><strong>UPOZORNĚNÍ:</strong> některé servery, např. <code>merlin.fit.vutbr.cz</code>, mají symlink <code>/bin/sh -&gt; bash</code>. Ověřte si proto, že skript skutečně testujete daným shellem. Doporučuji ověřit správnou funkčnost pomocí virtuálního stroje níže.</p></li>
+<li><p>Skript musí běžet na běžně dostupných OS GNU/Linux, BSD a MacOS. Studentům je k dispozici virtuální stroj s obrazem ke stažení zde: <a href="http://www.fit.vutbr.cz/~lengal/public/trusty.ova.cs">http://www.fit.vutbr.cz/~lengal/public/trusty.ova</a> (pro VirtualBox, login: <code>trusty</code> / heslo: <code>trusty</code>), na kterém lze ověřit správnou funkčnost projektu.</p></li>
+<li><p>Skript nesmí používat dočasné soubory. Povoleny jsou však dočasné soubory nepřímo tvořené jinými příkazy (např. příkazem <code>sed -i</code>).</p></li>
+<li><p>Čísla vypisujte v desítkovém zápisu s přesností na dvě desetinná místa. Pozor, některé nástroje (např. <code>awk</code>) mohou větší čísla vypisovat implicitně pomocí vědeckého zápisu.</p></li>
+</ol>
+<h1 id="odevzdání-projektu">Odevzdání projektu</h1>
+<p>Odevzdávejte pouze skript <code>tradelog</code> (nebalte ho do žádného archivu). Odevzdejte do IS, termín Projekt 1.</p>
+<h1 id="rady">Rady</h1>
+<ul>
+<li>Dobrá dekompozice problému na podproblémy Vám může značně ulehčit práci a předejít chybám.</li>
+<li>Naučte se <em>dobře</em> používat funkce v shellu</li>
+</ul>
+<h1 id="příklady-použití">Příklady použití</h1>
+<ul>
+<li>Ukázky záznamů nástroje pro obchodování na burze jsou dostupné zde: <a href="https://pajda.fit.vutbr.cz/ios/ios-21-1-logs">https://pajda.fit.vutbr.cz/ios/ios-21-1-logs</a></li>
+</ul>
+<p>Příklady:</p>
+<pre><code>$ cat stock-2.log | head -n 5 | ./tradelog
+2021-07-29 15:30:42;MSFT;sell;240.07;USD;327;65fad854-7943-11eb-929d-8c85906a186d
+2021-07-29 15:31:12;MA;sell;314.91;USD;712;65fae24a-7943-11eb-9171-8c85906a186d
+2021-07-29 15:31:32;BAC;buy;34.16;USD;635;65fae466-7943-11eb-8f48-8c85906a186d
+2021-07-29 15:37:09;BAC;sell;36.67;USD;897;65fae614-7943-11eb-9ccb-8c85906a186d
+2021-07-29 15:43:02;JPM;sell;146.77;USD;190;65fae79a-7943-11eb-8977-8c85906a186d</code></pre>
+<pre><code>$ ./tradelog -t TSLA -t V stock-2.log
+2021-07-29 17:06:57;TSLA;buy;757.57;USD;812;65fafb04-7943-11eb-8d41-8c85906a186d
+2021-07-29 17:58:18;V;sell;215.31;USD;406;65fb0662-7943-11eb-87fe-8c85906a186d
+2021-07-29 18:12:27;TSLA;sell;729.75;USD;482;65fb0892-7943-11eb-867f-8c85906a186d
+2021-07-29 18:55:19;V;sell;217.92;USD;210;65fb1238-7943-11eb-86e2-8c85906a186d
+2021-07-29 19:19:26;TSLA;sell;700.75;USD;457;65fb1792-7943-11eb-8abf-8c85906a186d
+2021-07-29 19:27:39;TSLA;buy;710.79;USD;633;65fb19b8-7943-11eb-a5d9-8c85906a186d
+2021-07-29 20:06:53;V;sell;218.72;USD;272;65fb237c-7943-11eb-83a3-8c85906a186d
+2021-07-29 20:59:16;V;sell;196.54;USD;92;65fb2c32-7943-11eb-9dd3-8c85906a186d
+2021-07-29 21:03:15;V;buy;188.60;USD;605;65fb2d4a-7943-11eb-8804-8c85906a186d
+2021-07-29 21:17:37;V;sell;222.52;USD;447;65fb2f7a-7943-11eb-8f28-8c85906a186d
+2021-07-29 21:18:18;TSLA;buy;733.96;USD;720;65fb3092-7943-11eb-992a-8c85906a186d
+2021-07-29 21:50:25;V;sell;212.58;USD;2833;65fb3a2e-7943-11eb-8e0b-8c85906a186d
+2021-07-29 22:10:55;TSLA;sell;718.31;USD;3794;65fb3f88-7943-11eb-a371-8c85906a186d
+2021-07-29 22:21:31;TSLA;sell;681.74;USD;7122;65fb41a4-7943-11eb-a09f-8c85906a186d
+2021-07-29 23:01:47;TSLA;sell;707.03;USD;1578;65fb4a50-7943-11eb-9f6e-8c85906a186d
+2021-07-29 23:21:11;TSLA;buy;679.27;USD;9655;65fb4fb4-7943-11eb-8199-8c85906a186d
+2021-07-29 23:43:13;TSLA;buy;667.90;USD;306;65fb53f6-7943-11eb-80cb-8c85906a186d
+2021-07-29 23:48:29;V;buy;195.52;USD;2003;65fb5824-7943-11eb-9b59-8c85906a186d</code></pre>
+<pre><code>$ ./tradelog -t CVX stock-4.log.gz | head -n 3
+2021-09-27 05:12:30;CVX;sell;108.17;USD;88;8f229a62-7945-11eb-a6fb-8c85906a186d
+2021-09-27 13:57:48;CVX;sell;94.81;USD;5374;8f22ec38-7945-11eb-8c68-8c85906a186d
+2021-09-27 14:52:50;CVX;sell;89.22;USD;7759;8f22f46c-7945-11eb-9bb2-8c85906a186d</code></pre>
+<pre><code>$ ./tradelog list-tick stock-2.log
+AAPL
+AMZN
+BABA
+BAC
+DIS
+FB
+GOOG
+GOOGL
+JNJ
+JPM
+MA
+MSFT
+NVDA
+PG
+PYPL
+TSLA
+TSM
+UNH
+V
+WMT</code></pre>
+<pre><code>$ ./tradelog profit stock-2.log
+-58863165.03</code></pre>
+<pre><code>$ ./tradelog -t TSM -t PYPL profit stock-2.log
+-577302.62</code></pre>
+<pre><code>$ ./tradelog pos stock-2.log
+AMZN      : 64645275.64
+GOOGL     :  7914389.08
+NVDA      :  2540507.69
+DIS       :  1925621.88
+TSM       :  1266217.38
+JPM       :   937220.31
+BABA      :   444692.64
+BAC       :   323899.29
+JNJ       :    81769.32
+FB        :    42673.05
+WMT       :     2423.34
+MSFT      :  -321051.64
+V         :  -322999.04
+PYPL      :  -502892.46
+MA        :  -569746.42
+TSLA      :  -872945.30
+PG        : -1138885.10
+AAPL      : -1190996.48
+UNH       : -1781240.88
+GOOG      : -9846258.51</code></pre>
+<pre><code>$ ./tradelog -t TSM -t PYPL -t AAPL pos stock-2.log
+TSM       :  1266217.38
+PYPL      :  -502892.46
+AAPL      : -1190996.48</code></pre>
+<pre><code>$ ./tradelog last-price stock-2.log
+AAPL      :  133.88
+AMZN      : 3496.04
+BABA      :  245.28
+BAC       :   38.61
+DIS       :  207.48
+FB        :  275.31
+GOOG      : 1975.97
+GOOGL     : 1990.04
+JNJ       :  155.16
+JPM       :  135.77
+MA        :  333.38
+MSFT      :  237.64
+NVDA      :  629.93
+PG        :  124.70
+PYPL      :  279.54
+TSLA      :  667.90
+TSM       :  140.41
+UNH       :  321.06
+V         :  195.52
+WMT       :  134.63</code></pre>
+<pre><code>$ ./tradelog hist-ord stock-2.log
+AAPL      : ##
+AMZN      : #####
+BABA      : ####
+BAC       : #####
+DIS       : #####
+FB        : ####
+GOOG      : ######
+GOOGL     : ########
+JNJ       : ##
+JPM       : ######
+MA        : ####
+MSFT      : ####
+NVDA      : ######
+PG        : #####
+PYPL      : ####
+TSLA      : ##########
+TSM       : ##
+UNH       : ######
+V         : ########
+WMT       : ####</code></pre>
+<pre><code>$ ./tradelog -w 100 graph-pos stock-6.log
+AAPL      : !!!!!!!!!!!!
+AMZN      : !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+BABA      : ####
+BAC       : ###
+DIS       : ###################
+FB        :
+GOOG      : !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+GOOGL     : ################################################################################
+JNJ       :
+JPM       : #########
+MA        : !!!!!
+MSFT      : !!!
+NVDA      : #########################
+PG        : !!!!!!!!!!!
+PYPL      : !!!!!
+TSLA      : !!!!!!!!
+TSM       : ############
+UNH       : !!!!!!!!!!!!!!!!!!
+V         : !!!
+WMT       :</code></pre>
+<pre><code>$ ./tradelog -w 10 -t FB -t JNJ -t WMT graph-pos stock-6.log
+FB        : #####
+JNJ       : ##########
+WMT       :</code></pre>
+<pre><code>$ cat /dev/null | ./tradelog profit
+0.00</code></pre></div>
+            <div class="d-none d-xl-block col-xl-2 bd-toc">
+               <ul class="section-nav">
+                  <li class="toc-entry"><ul>
+<li><a href="https://www.fit.vutbr.cz/study/courses/IOS/private/Lab/projekty/projekt1/projekt1.html.cs#popis-%C3%BAlohy">Popis úlohy</a></li>
+<li><a href="https://www.fit.vutbr.cz/study/courses/IOS/private/Lab/projekty/projekt1/projekt1.html.cs#zjednodu%C5%A1en%C3%BD-%C3%BAvod-do-problematiky">Zjednodušený úvod do problematiky</a></li>
+<li><a href="https://www.fit.vutbr.cz/study/courses/IOS/private/Lab/projekty/projekt1/projekt1.html.cs#specifikace-rozhran%C3%AD-skriptu">Specifikace rozhraní skriptu</a></li>
+<li><a href="https://www.fit.vutbr.cz/study/courses/IOS/private/Lab/projekty/projekt1/projekt1.html.cs#popis">Popis</a></li>
+<li><a href="https://www.fit.vutbr.cz/study/courses/IOS/private/Lab/projekty/projekt1/projekt1.html.cs#podrobn%C3%A9-po%C5%BEadavky">Podrobné požadavky</a></li>
+<li><a href="https://www.fit.vutbr.cz/study/courses/IOS/private/Lab/projekty/projekt1/projekt1.html.cs#n%C3%A1vratov%C3%A1-hodnota">Návratová hodnota</a></li>
+<li><a href="https://www.fit.vutbr.cz/study/courses/IOS/private/Lab/projekty/projekt1/projekt1.html.cs#implementa%C4%8Dn%C3%AD-detaily">Implementační detaily</a></li>
+<li><a href="https://www.fit.vutbr.cz/study/courses/IOS/private/Lab/projekty/projekt1/projekt1.html.cs#odevzd%C3%A1n%C3%AD-projektu">Odevzdání projektu</a></li>
+<li><a href="https://www.fit.vutbr.cz/study/courses/IOS/private/Lab/projekty/projekt1/projekt1.html.cs#rady">Rady</a></li>
+<li><a href="https://www.fit.vutbr.cz/study/courses/IOS/private/Lab/projekty/projekt1/projekt1.html.cs#p%C5%99%C3%ADklady-pou%C5%BEit%C3%AD">Příklady použití</a></li>
+</ul></li>
+               </ul>
+            </div>
+         </div>
+               </div>
+            <!-- Add comment hosting service here -->
+            <!-- Footer -->
+            <footer class="footer text-muted">
+               <div align="center">
+                  <!-- Please keep the following line -->
+                  Built with <a href="https://www.pandoc.org/" target="_blank" rel="noopener">Pandoc</a> 
+                  using <a href="https://github.com/ashki23/pandoc-bootstrap" target="_blank" rel="noopener">pandoc-bootstrap</a> theme
+                  <br>
+               </div>
+            </footer>
+            <!-- Add global site tag (gtag.js) and site analytics here -->
+            <!-- JS, Popper.js, and jQuery -->
+      <script src="./1. Úloha IOS (2021)_files/jquery-3.5.1.slim.min.js.stiahnuť" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+      <script src="./1. Úloha IOS (2021)_files/popper.min.js.stiahnuť" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+      <script src="./1. Úloha IOS (2021)_files/bootstrap.min.js.stiahnuť" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+      <!-- Mathjax -->
+      <script src="./1. Úloha IOS (2021)_files/polyfill.min.js.stiahnuť"></script>
+      <script id="MathJax-script" async="" src="./1. Úloha IOS (2021)_files/tex-mml-chtml.js.stiahnuť"></script>
+      <script>
+         /* Bootstrap styles to tables */
+         function bootstrapStylePandocTables() {
+         $('tr.header').parent('thead').parent('table').addClass('table table-condensed'); }
+         $(document).ready(function () { bootstrapStylePandocTables(); });
+         /* Adjust the height when click the toc */
+         var shiftWindow = function() { scrollBy(0, -60) };
+         window.addEventListener("hashchange", shiftWindow);
+         function load() { if (window.location.hash) shiftWindow(); }
+      </script>
+   
+
+</body></html>

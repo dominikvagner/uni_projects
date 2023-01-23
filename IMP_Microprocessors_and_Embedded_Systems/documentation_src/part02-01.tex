@@ -1,0 +1,25 @@
+\section{Problematika}
+Problematiku si můžeme do rozdělit do dvou částí a to inicializace sběrnic a komponentů, následná práce s nimi a zpracování z nich získaných dat.
+
+\subsection{Inicializace sběrnic a komponentů}
+Každá z našich externích komponent komunikuje s mikrokontrolerem pomocí jiné sběrnice. Náš OLED displej používá sběrnici SPI, zatímco náš senzor tepu komunikuje na sběrnici I2C. Jako první věc v našem programu, před hlavní smyčkou, musíme inicializovat naše komponenty a jejich sběrnice. Při inicializaci musíme specifikovat jaké jsou čísla GPIO pinů které používáme, jejich mód, povolení pull-up rezistorů a jejich frekvenci. Prvotní inicializace senzoru také vyžaduje nastavení jeho konfiguraci, kde nastavujeme jeho hodnoty určující například délku pulzu, nebo proud jednotlivých LED.
+
+
+
+\subsection{Práce s komponenty a získanými daty}
+S displejem naše práce vypadal velmi přímočaře. Jediné jsme potřebovali udělat bylo zvolit rozlišení, font a při zachycení srdečního pulzu smazat aktuálně zobrazený obsah displeje a nechat vykreslit nový s aktuálními hodnotami.
+
+U senzoru už je situace komplikovanější, protože z něj přímo hodnoty které potřebujeme zobrazovat nedostáváme. Data které můžeme číst jsou pouze sečtené hodnoty střídavého a stejnosměrného proudu. Tyto data jsou také v senzoru ukládané do fronty z které je musíme číst a potvrzovat jejich přečtení pro posunutí fronty \cite{max30102-datasheet}. Z přečtených dat musíme nejdříve nejdříve odstranit hodnoty stejnosměrného proudu a následně musíme data vyfiltrovat a z výsledků rozhodnout zda jsme detekovali nový puls. Pokud byl puls detekován tak musíme vypočítat počet pulsů neboli tepů za minutu a kyslíkovou saturaci. 
+
+Počet srdečních tepů za minutu počítáme tak že vydělíme délku minuty v milisekundách délkou jednotlivého pulsu, z těchto dat také děláme klouzavý průměr abychom dosáhli více srozumitelných výsledků. 
+
+Kvadratický průměr potřebný pro výpočet kyslíkové saturace můžeme vypočítat pomocí rovnice \eqref{eq:R}, jedná se o vydělení střídavých a stejnosměrných proudů červené a infračervené diody. 
+\begin{equation}\label{eq:R}
+    R=\frac{\frac{A C_{\text {red }}}{D C_{\text {red }}}}{\frac{A C_{\text {infrared }}}{D C_{\text {infrared }}}}
+\end{equation}
+Po získaní daného průměru poté provedeme lineární aproximaci kyslíkové saturace. Po upravení hodnot z doporučených nastavení \cite{max30102-application-node} výrobci čipu tak aby seděl na testovaný kus (v porovnání s komerčním měřičem kyslíkové saturace a tepu, viz sekce \ref{testovani}) se došlo na rovnici \eqref{eq:SpO2}
+\begin{equation}\label{eq:SpO2}
+    SpO2 = 117 - 18R
+\end{equation}
+
+\newpage

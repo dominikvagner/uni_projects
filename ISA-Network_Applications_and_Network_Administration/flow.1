@@ -1,0 +1,33 @@
+.TH FLOW 1
+.SH NAME
+flow \- CLI NetFlow v5 exporter for already captured communication.
+.SH SYNOPSIS
+.B flow
+[\fB\-f\fR \fI<file>\fR]
+[\fB\-c\fR \fI<netflow_collector[:<port>]>\fR]
+[\fB\-a\fR \fI<active_timer>\fR]
+[\fB\-i\fR \fI<inactive_timer>\fR]
+[\fB\-m\fR \fI<count_timer>\fR]
+[\fB\-h\fR]
+.SH DESCRIPTION
+.B flow
+exports NetFlow v5 packets to a NetFlow collector. Input in the form of a .pcap file is needed.
+.SH OPTIONS
+.BR \-f\ \fIfile\fR
+file = Name of the analyzed file with captured packets, default is STDIN.
+
+.BR \-c\ \fInetflow_collector:port\fR
+netflow_collector = Address of a collector to which we want to export, default is 127.0.0.1.
+port = Port on which the collector is listening, default is 2055.
+
+.BR \-a\ \fIactive_timer\fR
+active_timer = Interval for which we want to keep active flows in our flow cache, default is 60.
+
+.BR \-i\ \fIinactive_timer\fR
+inactive_timer = Interval between last received packet of each flow, before marking them as expired, defualt of 10.
+
+.BR \-m\ \fIcount\fR
+count = Maximum number of flow records in our flow cache, default of 1024.
+
+.BR \-h
+Program help similiar to this manpage.

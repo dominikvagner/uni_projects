@@ -1,0 +1,54 @@
+%%%%% Projekt z předmětu IMP %%%% 
+%% Autor: Dominik Vágner, xvagne10
+
+\documentclass[a4paper, 12pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[czech]{babel}
+\usepackage[text={18cm,25cm}, top=1.8cm, left=1.8cm, includefoot]{geometry}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{float}
+\usepackage{pdflscape}
+\usepackage{cite}
+\usepackage{etoolbox}
+\usepackage{hyperref}
+\usepackage{enumitem}
+
+\patchcmd{\thebibliography}{\section*{\refname}}{}{}{}
+
+\nocite{*}
+
+\newcommand{\logo}{
+    \includegraphics[scale=0.1,keepaspectratio]{fig/logo_cz.png}
+}
+
+\title{\logo \\ \vspace{1.5em} IMP -- Projekt, varianta č. 21 \\ ESP32: Měření srdečního tepu [digitální senzor] \vspace{1em}}
+\author{Dominik Vágner, \\ xvagne10}
+\date{\today}
+
+\begin{document}
+    \maketitle
+
+    \tableofcontents
+
+    \newpage
+
+    % Úvod %
+    \input{part01-01.tex}
+    % Problematika %
+    \input{part02-01.tex}
+    % Implementace %
+    \input{part03-01.tex}
+    % Rozšíření %
+    \input{part04-01.tex}
+    % Testovaní %
+    \input{part05-01.tex}
+    % Závěr %
+    \input{part06-01.tex}
+    
+    \newpage
+    \input{literatura.tex}
+
+    \addcontentsline{toc}{section}{Literatura}
+\end{document}

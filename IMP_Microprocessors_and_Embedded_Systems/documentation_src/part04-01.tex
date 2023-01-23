@@ -1,0 +1,10 @@
+\section{Rozšíření}
+Pro rozšíření projektu mě napadlo udělat z ESP mikrokontroleru taky Wi-Fi access point a na něm zprovoznit web server na kterém by se pravidelně obnovovali hodnoty, tedy stejně jako na displeji. Toto rozšíření mi přijde velmi praktické, chtěl jsem si ho vyzkoušet, protože by jej šlo využít i pro domácí prostředí kdybychom měli nějaký senzor a hodnoty z něho bychom chtěli mít přístupné odkudkoliv. Také by poté šlo vynechat zobrazování na displeji a zjednodušila by se tak komplexita zapojení a snížila se tak i cena.
+
+\subsection{Funkce potřebné pro rozšíření}
+\begin{itemize}[itemsep=0pt]
+    \item \texttt{wifi\_init} -- Inicializace a konfigurace ESP jako Wi-Fi přístupového bodu \cite{setup-esp-as-AP}.
+    \item \texttt{http\_init} -- Inicializuje HTTP server a přidání dvou koncových bodů \cite{http-server-setup}. 
+    \item \texttt{index\_handler} -- Vytvoření obsluhy pro koncový bod \texttt{/}, který zobrazuje stejné hodnoty jako displej a pomocí asynchronních dotazů na koncový bod \texttt{/values} je obnovuje.
+    \item \texttt{values\_handler} -- Vytvoření obsluhy pro koncový bod \texttt{/values}
+\end{itemize}
